@@ -1,0 +1,1 @@
+pandoc IHE_DEV_Suppl_MEMLS_Rev1-5_TI_2024-09-19.docx -f docx -t asciidoc --wrap=none --markdown-headings=atx --extract-media=extracted-media-memls -o memls.adoc
