@@ -5,10 +5,10 @@ If you need assistance with an aspect of using GitHub for this repository, pleas
 
 As of August 6, 2025 the admins for this repository are:
 
-Todd Cooper
-Javier Espina
-David Gregorczyk
-John Rhoads
-Michael Faughn
+* Todd Cooper
+* Javier Espina
+* David Gregorczyk
+* John Rhoads
+* Michael Faughn
 
 Note that this is not the list of admins for any of the other repositories that are related to IHE/DEV, such as the DEV.SDPi or DEV.PCIM repositories.
