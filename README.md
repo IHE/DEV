@@ -10,6 +10,8 @@ As of August 6, 2025 the admins for this repository are:
 * David Gregorczyk
 * John Rhoads
 * Michael Faughn
+* Kurt Elliason
+* Tom Kowalczyk
 
 Note that this is not the list of admins for any of the other repositories that are related to IHE/DEV, such as the DEV.SDPi or DEV.PCIM repositories.
 
