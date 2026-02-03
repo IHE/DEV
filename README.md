@@ -56,11 +56,11 @@ The admins for the root IHE GitHub organization are able to create new repositor
 ### Notes
 
 Do we need documentation about:
--how and when to create a branch
--how to commit to a branch
--how and when to create a PR
--how a PR is reviewed / accepted
--how and when new repos are created
--who the IHE root namespace admins are
+- how and when to create a branch
+- how to commit to a branch
+- how and when to create a PR
+- how a PR is reviewed / accepted
+- how and when new repos are created
+- who the IHE root namespace admins are
 
 Do we need protections on the master branch? (probably yes)
