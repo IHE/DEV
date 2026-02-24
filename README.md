@@ -9,7 +9,7 @@ IHE Devices Domain information and formal documentation, including published tec
 - review notes at bottom of this file
 
 ### Current Publications
-The current versions of IHE Devices Domain (DEV) technical framework (TF) document volumes and supplements may be found on the main [IHE Devices domain page](https://profiles.ihe.net/DEV/index.html)...and also on the [IHE Technical Frameworks web page](https://www.ihe.net/resources/technical_frameworks/#dev).
+The current versions of IHE Devices Domain (DEV) technical framework (TF) document volumes and supplements may be found on the main [IHE Devices domain page](https://profiles.ihe.net/DEV/index.html).
 
 ### Archived Publications
 Archived versions of these publications may be found [here](https://www.ihe.net/resources/technical_frameworks/technical_framework_archives/#dev).
