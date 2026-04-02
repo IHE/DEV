@@ -1,0 +1,1 @@
+These need to be converted to AsciiDoc and then moved to the "archived docx" directory

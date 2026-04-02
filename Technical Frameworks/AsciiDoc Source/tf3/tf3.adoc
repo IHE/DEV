@@ -1,0 +1,1097 @@
+*Integrating the Healthcare Enterprise*
+
+image:extracted-media-tf3/media/image1.jpeg[IHE_LOGO_for_tf-docs,width=172,height=88]
+
+*IHE Devices (DEV)*
+
+*Technical Framework*
+
+*Volume 3*
+
+*IHE DEV TF-3*
+
+*Semantic Content*
+
+*Revision 10.0 - Final Text*
+
+*November 4, 2024*
+
+*Please verify you have the most recent version of this document,* which is published https://profiles.ihe.net/DEV/index.html[here].
+
+*CONTENTS*
+
+link:#introduction[1 Introduction link:#introduction[4]]
+
+link:#introduction-to-ihe[1.1 Introduction to IHE link:#introduction-to-ihe[4]]
+
+link:#intended-audience[1.2 Intended Audience link:#intended-audience[4]]
+
+link:#overview-of-technical-framework-volume-3[1.3 Overview of Technical Framework Volume 3 link:#overview-of-technical-framework-volume-3[4]]
+
+link:#comment-process[1.4 Comment Process link:#comment-process[5]]
+
+link:#copyright-licenses[1.5 Copyright Licenses link:#copyright-licenses[5]]
+
+link:#trademark[1.6 Trademark link:#trademark[5]]
+
+link:#disclaimer-regarding-patent-rights[1.7 Disclaimer Regarding Patent Rights link:#disclaimer-regarding-patent-rights[5]]
+
+link:#history-of-document-changes[1.8 History of Document Changes link:#history-of-document-changes[5]]
+
+link:#conventions[2 Conventions link:#conventions[6]]
+
+link:#content-module-modeling-and-profiling-conventions[2.1 Content Module Modeling and Profiling Conventions link:#content-module-modeling-and-profiling-conventions[6]]
+
+link:#additional-standards-profiling-conventions[2.2 Additional Standards Profiling Conventions link:#additional-standards-profiling-conventions[6]]
+
+link:#overview-of-device-semantic-content-profiling[3 Overview of device semantic content profiling link:#overview-of-device-semantic-content-profiling[7]]
+
+link:#general-device-content-considerations[3.1 General device content considerations link:#general-device-content-considerations[7]]
+
+link:#hierarchical-containment-tree-information[3.1.1 Hierarchical containment tree information link:#hierarchical-containment-tree-information[7]]
+
+link:#device-semantics-controlled-terminologies[3.1.2 Device semantics & controlled terminologies link:#device-semantics-controlled-terminologies[9]]
+
+link:#overview-of-the-isoieee-11073-nomenclatureterminology[3.1.3 Overview of the ISO/IEEE 11073 nomenclature/terminology link:#overview-of-the-isoieee-11073-nomenclatureterminology[10]]
+
+link:#private-terms-and-scope[3.1.4 Private terms and scope link:#private-terms-and-scope[10]]
+
+link:#new-or-non-specified-terms[3.1.5 New or non-specified terms link:#new-or-non-specified-terms[11]]
+
+link:#episodic-vs.-periodic-data-updates[3.1.6 Episodic vs. periodic data updates link:#episodic-vs.-periodic-data-updates[11]]
+
+link:#alternative-units-of-measurement-mapping[3.1.7 Alternative units of measurement mapping link:#alternative-units-of-measurement-mapping[13]]
+
+link:#alert-and-event-semantics[3.2 Alert and event semantics link:#alert-and-event-semantics[14]]
+
+link:#body-site-semantics[3.3 Body site semantics link:#body-site-semantics[16]]
+
+link:#basic-data-type-specifications[3.4 Basic data type specifications link:#basic-data-type-specifications[16]]
+
+link:#mds-semantics[3.5 MDS semantics link:#mds-semantics[19]]
+
+link:#vmd-semantics[3.6 VMD semantics link:#vmd-semantics[20]]
+
+link:#channel-semantics[3.7 Channel semantics link:#channel-semantics[21]]
+
+link:#reserved[4 Reserved link:#reserved[23]]
+
+link:#reserved-1[5 Reserved link:#reserved-1[23]]
+
+link:#reserved-2[6 Reserved link:#reserved-2[23]]
+
+link:#device-specialization-content-modules[7 Device specialization content modules link:#device-specialization-content-modules[24]]
+
+link:#device-infusion-pump[7.1 Device: Infusion Pump link:#device-infusion-pump[24]]
+
+link:#containment-tree[7.1.1 Containment tree link:#containment-tree[24]]
+
+link:#channel-source[7.1.2 Channel: Source link:#channel-source[24]]
+
+link:#channel-delivery[7.1.3 Channel: Delivery link:#channel-delivery[25]]
+
+link:#device-ventilator[7.2 Device: Ventilator link:#device-ventilator[26]]
+
+link:#containment-tree-1[7.2.1 Containment tree link:#containment-tree-1[26]]
+
+link:#channel-ventilator[7.2.2 Channel: Ventilator link:#channel-ventilator[27]]
+
+link:#channel-airway-pressure[7.2.3 Channel: Airway Pressure link:#channel-airway-pressure[27]]
+
+link:#channel-airway-volume[7.2.4 Channel: Airway Volume link:#channel-airway-volume[28]]
+
+link:#channel-airway-breath-pattern[7.2.5 Channel: Airway Breath Pattern link:#channel-airway-breath-pattern[28]]
+
+link:#device-physiologic-monitor[7.3 Device: Physiologic Monitor link:#device-physiologic-monitor[29]]
+
+link:#containment-tree-2[7.3.1 Containment tree link:#containment-tree-2[29]]
+
+link:#channel-invasive-blood-pressure[7.3.2 Channel: Invasive Blood Pressure link:#channel-invasive-blood-pressure[30]]
+
+link:#channel-blood-pressure-non-invasive[7.3.3 Channel: Blood Pressure – Non-Invasive link:#channel-blood-pressure-non-invasive[30]]
+
+link:#channel-blood-pressure-pulse-rate[7.3.4 Channel: Blood Pressure – Pulse Rate link:#channel-blood-pressure-pulse-rate[30]]
+
+link:#channel-temperature[7.3.5 Channel: Temperature link:#channel-temperature[31]]
+
+link:#channel-pulse-ox[7.3.6 Channel: Pulse Ox link:#channel-pulse-ox[31]]
+
+link:#channel-pulse-rate-ox[7.3.7 Channel: Pulse Rate Ox link:#channel-pulse-rate-ox[31]]
+
+link:#_Toc181626399[7.3.8 Channel: ECG Monitoring link:#_Toc181626399[32]]
+
+link:#channel-ecg-resp[7.3.9 Channel: ECG Resp link:#channel-ecg-resp[32]]
+
+link:#channel-heart-rate[7.3.10 Channel: Heart Rate link:#channel-heart-rate[32]]
+
+link:#_Toc181626402[7.3.11 Channel: Arrhythmia link:#_Toc181626402[32]]
+
+link:#channel-ischemia[7.3.12 Channel: Ischemia link:#channel-ischemia[33]]
+
+link:#channel-ecg-measurements[7.3.13 Channel: ECG Measurements link:#channel-ecg-measurements[33]]
+
+link:#channel-cardiac-output-continuous[7.3.14 Channel: Cardiac Output – Continuous link:#channel-cardiac-output-continuous[33]]
+
+link:#channel-cardiac-output-intermittent[7.3.15 Channel: Cardiac Output – Intermittent link:#channel-cardiac-output-intermittent[34]]
+
+link:#channel-hemodynamics-calculator[7.3.16 Channel: Hemodynamics Calculator link:#channel-hemodynamics-calculator[34]]
+
+link:#_Toc332637618[Appendices link:#_Toc332637618[35]]
+
+link:#appendix-a-reserved[Appendix A Reserved link:#appendix-a-reserved[35]]
+
+== Introduction
+
+This document, Volume 3 of the IHE Devices (DEV) Technical Framework, defines content modules used in the IHE Devices profiles.
+
+=== Introduction to IHE
+
+Integrating the Healthcare Enterprise (IHE) is an international initiative to promote the use of standards to achieve interoperability among health information technology (HIT) systems and effective use of electronic health records (EHRs). IHE provides a forum for care providers, HIT experts and other stakeholders in several clinical and operational domains to reach consensus on standards-based solutions to critical interoperability issues.
+
+The primary output of IHE is system implementation guides, called IHE Profiles. IHE publishes each profile through a well-defined process of public review and trial implementation and gathers profiles that have reached final text status into an IHE Technical Framework, of which this volume is a part.
+
+For more general information regarding IHE, refer to http://www.ihe.net[www.ihe.net]. It is strongly recommended that, prior to reading this volume, the reader familiarizes themselves with the concepts defined in the https://profiles.ihe.net/GeneralIntro/index.html[IHE Technical Frameworks General Introduction].
+
+=== Intended Audience
+
+The intended audience audience of IHE Technical Frameworks Volume 3 is:
+
+* IT departments of healthcare institutions
+* Technical staff of vendors participating in the IHE initiative
+* Experts involved in standards development
+
+=== Overview of Technical Framework Volume 3
+
+The remainder of Section 1 further describes the general nature, purpose and function of the Technical Framework. Section 2 presents the conventions used in this volume to define IHE transactions.
+
+Section 3 defines the general approach for defining device-related content. Subsequent sections address general content elements, as well as specifications for the content related to specific integration profiles and device specializations (e.g., ventilator). All of these address both terminology and information model specifications. These abstract semantic content specifications may then be bound to IHE profile implementations, including the “payload” in transactions, as well as content modules in documents. In some cases this content may be mandatory for a given exchange, and in others it may be used as the result of a profile option.
+
+The appendices following the main body of this volume provide technical details associated with the semantic content specifications.
+
+For a brief overview of additional Technical Framework Volumes (TF-1, TF-2, TF-4), please see the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-5.html[Section 5 - Structure of the IHE Technical Frameworks].
+
+=== Comment Process
+
+IHE International welcomes comments on this document and the IHE initiative. Comments on the IHE initiative can be submitted by sending an email to the co-chairs and secretary of the Devices domain committees at dev@ihe.net. Comments on this document can be submitted at http://ihe.net/DEV_Public_Comments/.
+
+=== Copyright Licenses
+
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-9.html[Section 9 - Copyright Licenses] for copyright license information for frequently referenced base standards. Information pertaining to the use of IHE International copyrighted materials is also available there.
+
+=== Trademark
+
+IHE^®^ and the IHE logo are trademarks of the Healthcare Information Management Systems Society in the United States and trademarks of IHE Europe in the European Community. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-10.html[Section 10 - Trademark] for information on their use.
+
+=== Disclaimer Regarding Patent Rights
+
+Attention is called to the possibility that implementation of the specifications in this document may require use of subject matter covered by patent rights. By publication of this document, no position is taken with respect to the existence or validity of any patent rights in connection therewith. IHE International is not responsible for identifying Necessary Patent Claims for which a license may be required, for conducting inquiries into the legal validity or scope of Patents Claims or determining whether any licensing terms or conditions provided in connection with submission of a Letter of Assurance, if any, or in any licensing agreements are reasonable or non-discriminatory. Users of the specifications in this document are expressly advised that determination of the validity of any patent rights, and the risk of infringement of such rights, is entirely their own responsibility. Further information about the IHE International patent disclosure process including links to forms for making disclosures is available at http://www.ihe.net/Patent_Disclosure_Process/[[.underline]#http://www.ihe.net/Patent_Disclosure_Process#]. Please address questions about the patent disclosure process to the secretary of the IHE International Board: mailto:secretary@ihe.net[[.underline]#secretary@ihe.net#].
+
+=== History of Document Changes
+
+This section provides a brief summary of changes and additions to this document.
+
+[width="100%",cols="15%,15%,70%",options="header",]
+|===
+|Date |Document Revision |Change Summary
+|NOV 2024 |10.0 |Updates due to Patient Care Device name change to Devices and to coincide with latest template version.
+|===
+
+== Conventions
+
+This document has adopted the following conventions for representing the framework concepts and specifying how the standards upon which the IHE Technical Framework is based shall be applied.
+
+=== Content Module Modeling and Profiling Conventions
+
+In order to maintain consistent documentation, modeling methods for IHE content modules and profiling conventions, for frequently used standards, are maintained in the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-E.html[Appendix E - Standards Profiling and Documentation Conventions]. Methods described include the standards conventions DICOM, HL7 v2.x, HL7 Clinical Document Architecture (CDA) Documents, etc. These conventions are critical to understanding this volume and should be reviewed prior to reading this text.
+
+=== Additional Standards Profiling Conventions
+
+This section defines profiling conventions for standards which are not described in the https://profiles.ihe.net/GeneralIntro/index.html[IHE Technical Frameworks General Introduction].
+
+Not applicable.
+
+== Overview of device semantic content profiling 
+
+Though the transactions and messages defined in TF-2 provide for syntactic interoperability, in order to achieve semantic interoperability, each class of device must use the same terminology and data organization or modeling for common information. This TF-3 defines common abstract semantics or content profiles for patient care devices that fall within this domain. The semantics are based on the ISO/IEEE 11073-10101 nomenclature/terminology and the ISO/IEEE 11073-10201 domain information model, with additional semantics systems specified as appropriate (e.g., LOINC or SNOMED-CT), either as mappings to ISO/IEEE concepts or independently for non-mappable concepts. Other sections of the Devices Technical Framework define the mapping of these semantics to the information technologies defined for each transaction (for example, the TF-2 (Appendix A) _Mapping ISO/IEEE 11073 Domain Information Model to HL7_).
+
+*_Note that this content specification is not intended to be exhaustive – the referenced standards should be consulted for more complete information._*
+
+In general, if a concept is not specified in this volume nor in the base standards (e.g., IEEE 11073-10101), a request should be made to the appropriate standards development organization (“SDOs”) to consider the additional concepts. Typically, this may be accomplished without significant delays, and if necessary, temporary term codes provided. See discussions below for additional information.
+
+===  General device content considerations
+
+This section addresses those issues that are transitive across all device types. Subsequent sections integrate these considerations as applicable to specific device specializations.
+
+==== Hierarchical containment tree information
+
+Each data item associated with a device specialization is specified within the context of its “containment tree” – all parameters are formalized either as attributes of a given object, or as instances of data objects that are contained within other objects in accordance to the following basic hierarchyfootnote:[See ISO/IEEE 11073-10201 Domain Information Model for complete details on these and other objects.]:
+
+image:extracted-media-tf3/media/image2.emf[extracted-media-tf3/media/image2]
+
+Figure 3.1.1-1: Basic ISO/IEEE 11073 Containment Tree
+
+There are many additional objects defined in the ISO/IEEE 11073 information model (e.g., waveform and alarm / alert monitoring objects); however, for the purposes of this technical framework, only the above objects are utilized. Each object provides the following:
+
+____
+*Medical Device System* Top level object that establishes the overall context for all device data. In addition to a basic device name (e.g., Ventilator), this object includes attributes for a unique identifier (e.g., EUI-64), manufacturer and model, subcomponent serial numbers, device date and time, A/C power status, battery charge level, locale, etc. Note that an MDS may contain additional MDS objects. This would be the case when, for example, a physiological monitor integrates additional devices such as external infusion pumps and ventilators.footnote:[Not shown here are the 4 MDS specializations: Simple MDS (contains a single VMD instance), Hydra MDS (contains multiple VMD instances); Composite Single Bed MDS (contains embedded MDSs for a single patient); and Composite Multi Bed MDS (multiple MDSs for multiple patients), identified in the ISO/IEEE 11073-10201 standard. None of these specialization objects add any attribution – they only reflect the relationships between the MDS and other objects (namely, other MDSs, VMDs, and Patient Demographics).]
+
+*Virtual Medical Device* Supports a particular device specialization that may contain multiple channels and reflects a basic device building block. For example, an airway VMD may contain channels for pressure, flow, volume, and breath metrics. For devices with plug-in modules, each component is typically formalized by a VMD instance.
+
+*Channel* Provides for the aggregation of closely related data objects. For example, an infusion pump VMD may contain multiple fluid source channels, each with its own parameters for delivery rate, volume to be infused (“VTBI”), volume infused, drug label, etc.
+
+*Metric* This abstract class (it is only inherited by the specialization objects and may not be instantiated alone) provides a basic set of attributes for all the specialization objects. For example, status (e.g., available, disabled, etc.), body site list, measurement start/stop time, label, etc.
+
+*Numeric* Supports values that are represented as a numeric quantity (e.g., a set breath rate). Attributes include value, units, time stamp, ranges, resolution, etc. Compound values are supported where multiple values are realized in a single numeric (e.g., diastolic and systolic blood pressure is typically represented as a compound numeric value).
+
+*Enumeration* Supports parameters that are typically represented by a set of specified values. For example, a device’s operational mode may be represented by one of a finite set (e.g., for a ventilator the mode may be CPAP, SIMV, assist, etc.).
+____
+
+Though the sequential ordering of objects and attributes are typically not important (e.g., information from multiple VMDs in an MDS may be communicated in any order), the containment associations must be maintained. For example, multiple channels may have the same “infusion rate” parameter – if they are not properly associated to the right channel, then the information will not be correctly interpreted. Additionally, containment is strictly enforced (e.g., an Enumeration instance may not be contained directly under a VMD or MDS without a Channel).
+
+For each of the device specializations specified below, the containment tree associated with each device and parameter is specified sufficiently to ensure proper communication when the information is exchanged in a transaction (MDS VMD Channel Parameter); however, for some devices, though the containment relationships are fully specified, they may not be necessary (save the top level MDS that identifies the device source) – there is a single instance of the parameter for the entire device. In these cases, the actual information communicated by a given transaction may be limited to the individual parameters grouped together within a single medical device system containment.
+
+==== Device semantics & controlled terminologies
+
+Specific device semantics are formalized as a combination of terminology / vocabulary codes organized according to a common information model. The containment tree discussion above presented the basic ISO/IEEE 11073 information model used to organize and associate various device parameters. Terminologies are required, though, to represent each concept that is communicated. For example, an infusion rate may be communicated as “100 mL/Hr”. At least two terms are required, one for the parameter name (“infusion rate”) and one for the units of measurement (“mL/Hr”). In the device specialization sections below, all of the required semantics are specified, so as to ensure that the same term set is used for a given class of device.
+
+==== Overview of the ISO/IEEE 11073 nomenclature/terminology
+
+The ISO/IEEE 11073-10101 (and related) nomenclature is optimized for medical device (esp. acute care) semantics, containing an extensive set of term codes supporting the information model, device parameters, units of measurement, body sites, alert events, etc. Each term in this system is formalized as a text-based Reference Identifier and a 16-bit or 32-bit numeric code. The 16-bit code is “context sensitive” in that it may be used when you know the class of information that it represents. For example, if in a message a field is being processed that represents Units of Measurement, then the 16-bit numeric code may be used, given that the semantic context has been established. The 32-bit code is “context free” in that it is guaranteed to be unique across the entire terminology.
+
+All text-based Reference ID’s are formalized as a contiguous string of either capitalized letters or underscores (“_”). For example, MDC_RESP_RATE or MDC_PULS_RATE. Note that the prefix “MDC” stands for medical device communication, and is often used to identify this nomenclature (e.g., “MDC” is used in HL7 to identify terms from this standard).
+
+By convention, this Technical Framework will specify 11073 terms using the following format:
+
+<Ref ID> (<partitionfootnote:[Note: Partition numbers are defined in ISO/IEEE 11073-10101, Section B.1.2, or in ISO/IEEE 11073-10201, type _NomPartition_ definition.] or code block>::<16-bit term code>)
+
+For example, the two terms above would be specified as follows:
+
+MDC_RESP_RATE (2::20490)
+
+MDC_PULS_RATE (2::18442)
+
+To determine the 32-bit value: <partition> * 2^16 + <16-bit term code>. So the pulse rate code above would have a 32-bit representation of 18444 (or hex 0x0002480A). The mapping rules for a given transaction technology shall indicate whether the textual Reference ID, 32-bit, or 16-bit codes may be used and how to properly encoded the terms (e.g., whether the numeric codes are formatted as text or binary values).
+
+If additional or alternative terms are needed from other systems, such as LOINC or SNOMED-CT, they will be specified as well.
+
+==== Private terms and scope
+
+Some devices communicate concepts that are either not standardized (in any terminology system) or are private and should only be recognized by applications that are aware of this device’s specific semantics. In this case, the 11073 terminology provides for “private” sections of the terminology where manufacturers may define these semantics without worry of overlapping other terms already assigned. The 16-bit range from 0xF000 to 0xFFFF (hex) for each code block is reserved for private terms. If an entire private block of terms (65536 items) is required, the partition 1024 may be used.
+
+In complex environments, though, where multiple devices are connected to a single patient and where two or more vendors may define terms with the same private codes (i.e., even the 32-bit identifier may not be unique), it is necessary to ensure proper scoping of these terms to ensure there are no collisions. To accomplish this, the scope associated with any private codes is defined by the containing VMD. This allows for modular systems where different plug-in components may be from different manufacturers.
+
+==== New or non-specified terms
+
+Additional terminology not contained in the device specializations below may:
+
+* Exist in a terminology and simply hasn’t been included in this version of the Framework, *or*
+* Be a new concept that should be standardized (e.g., resulting from a new device modality),
++
+*or*
+* Is a private or custom term that is particular to a single manufacturer’s device and should not necessarily be standardized.
+
+In the first case, change requests may be submitted to this Technical Framework to have the needed semantics added. In general, if the semantics exist (either as terms and/or attributes in the Domain Information Model, they may be used in transactions without being added to this content specification; however, in order to achieve semantic interoperability and heterogeneity with a class of device, there must be agreement regarding the way a given concept is represented.
+
+In the second case, new terms may be submitted to the relevant standard group for consideration. For these, either a pre-assigned term may be used or a private term until standardization is complete.footnote:[Note: The ISO/IEEE 11073 group has indicated that it will make a best effort to address all new term requests as quickly as possible and where appropriate to provide rapid assignment of Reference IDs and term codes.]
+
+In the third case, a private code should be used and is out-of-scope for inclusion in this content specification.
+
+==== Episodic vs. periodic data updates
+
+Device information is typically reported in a manner appropriate for the given parameter and consuming application. Data reporting modes include:
+
+* Periodically – for parameters that change or are updated regularly. For example, the volume delivered on an infusion pump changes regularly based on the fluid delivery rate.
+* Periodically High-Frequency – for data that is reported periodically but at high data rates. For example, physiological waveforms.
+* Episodically – for parameters that change infrequently or based on an external event. For example, an operational setting is modified by the clinician or a breath or heart beat has been detected.
+* Snap-shot – for those applications that only request the current value of a device’s information at infrequent intervals. For example, once every 10 minutes or an hour.
+
+Where appropriate, the device parameter specifications below shall indicate whether a particular item is updated periodically or episodically. In the ISO/IEEE 11073 information model, the Metric::MetricRelevance and Metric::MetricAccess provide this information.
+
+In the ISO/IEEE 11073 information model, provision for creating data updates or “event reports” for these various methods fall to a number of “extended services” objects such as an episodic scanner, periodic scanner, or fast periodic scanner. Each instance of these objects “scans” a configured list of data items and when changes are detected, generates an update including those parameters. For example, a “breath” episodic scanner instance would report all breath-to-breath related parameters (e.g., I:E ratio, inspiratory time, peak inspiratory pressure, etc.) whenever a breath completion has been detected.
+
+Depending on the transaction profile conveying the device data, identification of these update classes may be supported. If so, the following terms should be used to differentiate the update type being reported:
+
+Table 3.1.6-1: Update Report Type Identification
+
+[width="100%",cols="40%,60%",options="header",]
+|===
+|Update Report Type Identification |
+|Update Type |Term Code
+|Episodic Update |MDC_NOTI_UNBUF_SCAN_RPT (1:: 3350)
+|Periodic Update |MDC_NOTI_BUF_SCAN_RPT (1:: 3331)
+|===
+
+==== Alternative units of measurement mapping
+
+Though the basic units of measurement specified in this technical framework are from the ISO/IEEE 11073-10101 Units of Measurement partition, mappings to alternative terminology systems may be required for some implementations of this technical framework. For each parameter in the device specializations that includes a unit of measurement specification, the ISO/IEEE term is called out. The following table provides a summary of all the units of measurement terms utilized by this framework and provides for their mapping to alternative systems
+
+Table 3.1.7-1: ISO/IEEE 11073 Alternative Units Mapping
+
+[width="100%",cols="28%,18%,18%,18%,18%",options="header",]
+|===
+|ISO/IEEE 11073 Alternative Units Mapping | | | |
+|ISO/IEEE 11073 |UCUM |LOINC |SNOMED-CT |Discussion
+|MDC_DIM_CM_H2O (4::3904) | | | |cmH~2~O
+|MDC_DIM_MICRO_G_PER_HR (3379) | | | |µG/hr
+|MDC_DIM_MICRO_G_PER_MIN (3347) | | | |µG/min
+|MDC_DIM_MILLI_G_PER_HR (3378) | | | |mG/hr
+|MDC_DIM_MILLI_G_PER_MIN (3346) | | | |mG/min
+|MDC_DIM_MILLI_L (4::1618) | | | |mL
+|MDC_DIM_MIN (4:2208) | | | |minutes
+|MDC_DIM_PERCENT (4::544) | | | |%
+|MDC_DIM_RESP_PER_MIN (4::2784) | | | |rpm
+|MDC_DIM_SEC (4::2176) | | | |seconds
+|MDC_DIM_X_INTL_UNIT_PER_HR (5696) | | | |i.u./hr
+|MDC_DIM_X_L_PER_MIN (4::3072) | | | |L/min
+|===
+
+=== Alert and event semantics
+
+Most medical devices provide indications of event or alert conditions. These are typically technical (e.g., a sensor needs to be calibrated or has been detached from the device), or physiological (e.g., a patient’s spontaneous breath rate is too high). There is also a prioritization associated with alert conditions (low, medium and high), and each device specifies the prioritization within a given class (e.g., if a device has 10 high priority alerts, and three are active, which is the highest priority of the three?).
+
+Additionally, an alert condition may be associated with the entire device (e.g., low battery), a particular channel (e.g., occlusion on infusion channel #2), or a specific parameter (e.g., heart rate too high). When communicated, the alert conditions should be associated with the appropriate device scope or entity within the device’s information containment tree or hierarchy. When associated with a given parameter (e.g., a monitored temperature or pressure reading), generic event codes are preferred over more specific terms. For example, “low” or “high” or “irregular” as associated with a monitored heart rate parameter vs.” high beat rate” and “low beat rate”, etc. In most cases, though, specific codes must be used, such as “gas contaminated” or “asystole”.
+
+Though some of these semantics are particular to a specific device, most are general and may be applied to multiple devices. The following table provides examples of common alert semantics that may be used in this TFfootnote:[For a more complete listing of device alert semantics, see ISO/IEEE 11073-10101 Section A.9 _Nomenclature, data dictionary, and codes for alerts (Block E)_, or Annex B.4 in the same standard.]:
+
+Table 3.2-1: Device Alert Event Semantics
+
+[width="100%",cols="35%,65%",options="header",]
+|===
+|Device Alert Event Semantics |
+|Description |Term Code
+|_General Events_ |
+|Alarm |MDC_EVT_ALARM (3::8)
+|Disconnected |MDC_EVT_DISCONN (3:22)
+|Empty |MDC_EVT_EMPTY (3::26)
+|Error |MDC_EVT_ERR (3::30)
+|Failure |MDC_EVT_FAIL (3::38)
+|High |MDC_EVT_HI (3::40)
+|High – Greater than set limit |MDC_EVT_HI_GT_LIM (3::42)
+|INOP (device is inoperable) |MDC_EVT_INOP (3::52)
+|Low |MDC_EVT_LO (3::62)
+|Low – Less than set limit |MDC_EVT_LO_LT_LIM (3::64)
+|Occlusion |MDC_EVT_OCCL (3::80)
+|Range Error |MDC_EVT_RANGE_ERR (3::164)
+|Door / Handle Position Problem |MDC_EVT_DOOR_OR_HANDLE_POSN_PROB (3::234)
+|Fluid Line Problem |MDC_EVT_FLUID_LINE_PROB (3::252)
+|Gas is contaminated |MDC_EVT_GAS_CONTAM (3::256)
+|Lead is off / disconnected |MDC_EVT_LEAD_OFF (3::272)
+|Sensor problem |MDC_EVT_SENSOR_PROB (3::312)
+|Low signal level |MDC_EVT_SIG_LO (3::380)
+|Timeout |MDC_EVT_TIMEOUT (3::584)
+|_Physiological/Medical Events_ |
+|Apnea |MDC_EVT_APNEA (3::3072)
+|Asystole |MDC_EVT_ECG_ASYSTOLE (3::3076)
+|Sustained Bradycardia |MDC_EVT_ECG_BRADY_SUST (3::3088)
+|Tachycardia |MDC_EVT_ECG_TACHY (3::3120)
+|Arrhythmia |MDC_EVT_ECG_ARRHY (3::3266)
+|_Technical Events_ |
+|Battery failed |MDC_EVT_BATT_FAIL (3::192)
+|Low Battery |MDC_EVT_BATT_LO (3::194)
+|Battery Malfunction |MDC_EVT_BATT_MALF (3::196)
+|Pressure cuff leak |MDC_EVT_CUFF_LEAK (3::228)
+|Pressure cuff position error |MDC_EVT_CUFF_POSN_ERR (3::430)
+|Pump in Free Flow |MDC_EVT_PUMP_FLOW_FREE (3::598)
+|_General Status Events_ |
+|Alarming Turned Off |MDC_EVT_STAT_AL_OFF (3::6144)
+|Alarming Turned On |MDC_EVT_STAT_AL_ON (3::6146)
+|Battery Charging |MDC_EVT_STAT_BATT_CHARGING (3::6150)
+|Standby Mode |MDC_EVT_STAT_STANDBY_MODE (3::6166)
+|Alarm Silence |MDC_EVT_STAT_AL_SILENCE (3::6214)
+|Door Open |MDC_EVT_STAT_DOOR_OPEN (3::6220)
+|Door Closed |MDC_EVT_STAT_DOOR_CLOS (3::6244)
+|_Advisory Events_ |
+|Check Device |MDC_EVT_ADVIS_CHK (3::6658)
+|Check Settings |MDC_EVT_ADVIS_SETTINGS_CHK (3::6668)
+|Replace Battery |MDC_EVT_ADVIS_BATT_REPLACE (3::6678)
+|Replace Syringe Warning |MDC_EVT_ADVIS_PUMP_SYRINGE_REPLACE_WARN (3::6712)
+|Check Ventilator Air Supply |MDC_EVT_ADVIS_VENT_AIR_SUPP_CHK (3::6728)
+|===
+
+Note: Private event codes may be used to define non-standardized events that are not contained in the table above or in the base ISO/IEEE 11073-10101 standard. Any use of private event codes should be clearly described in the device’s documentation.
+
+=== Body site semantics
+
+One or more body sites may be associated with a given device parameter. For example, a temperature may have the same term codes, but are differentiated by the location of the where the temperature is taken. Other parameters (especially EEG and BIS measurements) are derived from signals from multiple sites. The ISO/IEEE 11073 Metric object includes an attribute listing body sites, either from the base 11073-10101 terminology or from other vocabularies. The following table provides some examples of body sites that may be associated with a device parameter:
+
+Table 3.3-1: Body Site Terms
+
+[width="100%",cols="47%,53%",options="header",]
+|===
+|Body Site Terms |
+|Descriptionfootnote:[Bracketed identifiers in Descriptions indicate the analogous SNOMED code.] |Term Code
+|Left ear (theta 120, phi 180) |MDC_HEAD_EAR_L (7::1289)
+|Right ear (theta 120, phi 0) |MDC_HEAD_EAR_R (7::1290)
+|Electrode 1 cm above the right eye on the eyebrow, in the middle between the center point of the eye and the lateral canthus. |MDC_EYE_CANTH_LAT_ABOVE_R (7::1362)
+|Subarachnoid, Left [T-X1502-LFT] (for neurological measurements and drainage) |MDC_BRAIN_SUBARACHNOIDAL (7::1412)
+|Left Atrium [T-32300] |MDC_HEART_ATR_L (7::1429)
+|Right Ventricle [T-32500] |MDC_HEART_VENT_R (7::1442)
+|Umbilical Artery [T-88810] |MDC_ART_UMBILICAL (7::1480)
+|Lower extremity, Great toe [T-Y9810] |MDC_LOEXT_TOE_GREAT (7::1620)
+|Upper extremity, Ring finger, NOS [T-Y8840] |MDC_UPEXT_FINGER_RING (7::1764)
+|Vena umbilicalis [T-49062] (child) (e.g., for fluid therapy) |MDC_VEIN_UMBILICAL_CHILD (7::1808)
+|===
+
+=== Basic data type specifications
+
+All communicated information must conform to common abstract data type specifications. The ISO/IEEE 11073-10201 standard defines data types for each object attribute using ASN.1 specification. The following listing identifies the data types used in this Technical Framework. When appropriate, the definition includes the analogous C/C++ constructs:
+
+____
+*AbsoluteTime* Date / Time specification as follows (BCD digits):
+
+struct AbsoluteTime \{
+
+UInt8 century;
+
+UInt8 year;
+
+UInt8 month;
+
+UInt8 day;
+
+UInt8 hour;
+
+UInt8 minute;
+
+UInt8 second;
+
+UInt8 sec-fractions;
+
+}
+
+*BatMeasure* Battery-related measurement:
+
+struct BatMeasure \{
+
+FLOAT-Type value;
+
+OID-Type units;
+
+}
+
+*FLOAT-Type* Basic numerical representation floating point representation, made up of a 24-bit signed magnitude and an 8-bit signed exponent, where:
+
+value = (magnitude) * (10^exponent)
+
+Special values are provided as follows:
+
+Not a Number (NaN) +(2^23-1)
+
+Not at this Resolution (NRes) -(2^23)
+
++INFINITY +(2^23-2)
+
+-INFINITY -(2^23-2)
+
+*Int16* 16-bit signed integer (_short int_)
+
+*Locale* Specification of localization information for the device, including language and max string lengthsfootnote:[For more complete details on the Locale data type, see the specification in ISO/IEEE 11073-10201.]:
+
+struct Locale \{
+
+UInt32 language; // From ISO 639-1 / 629-2
+
+UInt32 country; // From ISO 3166-1, -2, -3
+
+UInt16 char-set; // IANA MIBenum values
+
+StringSpec str-spec;// Max length + null term.
+
+}
+
+*OID-Type* 16-bit term code (context-sensitive portion)
+
+*ProdSpecEntry* A specification of a production serial number or other configuration identifier:
+
+struct ProdSpecEntry \{
+
+TEXTfootnote:[In the 11073-10201 standard, this is defined as an enumeration of UInt16 values, but for this framework it is specified as an identifying text string.] spec_type;
+
+UInt16 component_id; // Mfgr’s ID
+
+TEXT prod-spec;
+
+}
+
+*TEXT* A printable text string (_char []_); either counted or null terminated.
+
+*TYPE* 32-bit context-free term code:
+
+struct TYPE \{
+
+UInt16 Partition;
+
+UInt16 Code;
+
+}
+
+*UInt8* 8-bit unsigned integer (_unsigned char_)
+
+*UInt16* 16-bit unsigned integer (_unsigned short int_)
+
+*UInt32* 32-bit unsigned integer (_unsigned long int_)
+____
+
+=== MDS semantics
+
+Parameters for each device specialization are contained within an MDS containment hierarchy. The following table describes some of those attributes defined by an MDS which may be applicable for any of the devices specified below:
+
+Table 3.5-1: Medical Device System (MDS) Attributes
+
+[width="100%",cols="14%,17%,30%,15%,24%",options="header",]
+|===
+|Medical Device System (MDS) Attributes | | | |
+|Attribute |Description |Term Code |Data Typefootnote:[Data types are further defined in Section _3.4 Basic data type specifications_.] |Values
+|System-Type |General category of the device (e.g., infusion pump) |MDC_ATTR_SYS_TYPE (1::2438) |TYPE |For example, MDC_DEV_PUMP_INFUS_MDS (1::4449)
+|Mds-Status |Device’s connection state (based on FSM) |MDC_ATTR_VMS_MDS_STAT (1::2471) |TEXTfootnote:[For the purposes of this technical framework, this data type which is MDSStatus, an enumerated set of UInt16 values, is defined as a set of string values.] |“disconnected”, “associated”, “configuring”, “configured”, “operating”, “re-configuring”, “disassociating”, “terminating”
+|System-Model |Manufacturer & Model label strings |MDC_ATTR_ID_MODEL (1::2344) |SystemModel a|
+manufacturer=”Philips”
+
+model=”IntelliVue MP70”
+
+|System-Id |Device unique identifier – typically EUI-64; top 24 bits = unique company ID; lower 40 bits = serialization code; related to MAC addresses. |MDC_ATTR_SYS_ID (1::2436) |TEXT |For example, “00-00-00-00-00-00-00-00”, where each “00” represents a hexadecimal representation of a byte.
+|Soft-Id |Locally (non-manufacturer) ID (e.g., hospital inventory number) |MDC_ATTR_ID_SOFT (1::2350) |TEXT |“TMC Vent 42”
+|Production-Specification |List of serial numbers and other items such as GMDN code |MDC_ATTR_ID_PROD_SPECN (1::2349) |List of ProdSpecEntry a|
+serial-number=”XYZ12345”
+
+sw-revision=”03.02.01”
+
+|Bed-Label |String identifying the bed to which the device has been assigned |MDC_ATTR_ID_BED_LABEL (1::2334) |TEXT |For example, “PICU 13”
+|Date-and-Time |Device’s current date / time setting |MDC_ATTR_TIME_ABS (1::2439) |AbsoluteTime |20, 06, 08, 14, 23, 43, 12, 34
+|Power-Statusfootnote:[A separate battery object is defined in the 11073-10201 standard for systems that report more advanced battery information.] |A/C or D/C |MDC_ATTR_POWER_STAT (1::2389) |TEXTfootnote:[This attribute is defined as a PowerStatus enumeration; however, for this Technical Framework, the value strings are defined.] |“onMains”, “onBattery”, “chargingFull”, “chargingTrickle”, “chargingOff”
+|Battery-Level |*_Percentage_* of battery capacity remaining |MDC_ATTR_VAL_BATT_CHARGE (1::2460) |UInt16 |50 %
+|Remaining-Battery-Time |Estimated battery run-time remaining (typically in minutes) |MDC_ATTR_VAL_BATT_REMAIN (1::2440) |BatMeasure |120.5 MDC_DIM_MIN (4:2208)
+|Altitude |In meters above / below sea level |MDC_ATTR_ALTITUDE (1::2316) |Int16 |120
+|Locale |Structure defining the device’s country, language and character setting |MDC_ATTR_LOCALE (1::2600) |Locale a|
+language = 0x656E0000 (“en”),
+
+country = 0x55530000 (“US”),
+
+charset = charset-iso-10646-ucs-2(1000),
+
+str-spec \{ str-max-len = 0x0040, str-flags = str-flag-nt(0) [0x8000] }
+
+|===
+
+=== VMD semantics
+
+Each MDS contains one or more Virtual Medical Devices (VMD). As stated above, a VMD may be used to represent either a major functional unit within a device (e.g., a ventilator may have one VMD to contain settings and general operational parameters and another as an Airway monitor or Airway Gas Analyzer). Additionally, VMDs typically represent units that may be plugged into other devices such as physiological monitors. The attributes in the following table apply to all VMD instances in the device specializations defined below:
+
+Table 3.6-1: Virtual Medical Device (VMD) Attributes
+
+[width="100%",cols="13%,19%,29%,14%,25%",options="header",]
+|===
+|Virtual Medical Device (VMD) Attributes | | | |
+|Attribute |Description |Term Code |Data Typefootnote:[Data types are further defined in Section _3.4 Basic data type specifications._] |Values
+|Type |General category of the VMD (e.g., infusion pump) |MDC_ATTR_ID_TYPE (1::2351) |TYPE |For example, MDC_DEV_SYS_PT_VENT_VMD (1::4466)
+|VMD-Status |VMD’s basic operational status |MDC_ATTR_VMD_STAT (1::2466) |TEXTfootnote:[For the purposes of this technical framework, this data type which is VMDStatus, an enumerated set of bit flags, is defined as a set of string values; multiple of these may be active at the same time.] |“vmd-off”, “vmd-not-ready”, “vmd-standby”, “vmd-transduc-discon”, “vmd-hw-discon”
+|VMD-Model |Manufacturer & Model label strings |MDC_ATTR_ID_MODEL (1::2344) |SystemModel a|
+manufacturer=”Philips”
+
+model=”IntelliVue MP70”
+
+|Production-Specification |List of serial numbers and other items such as GMDN code |MDC_ATTR_ID_PROD_SPECN (1::2349) |List of ProdSpecEntry a|
+serial-number=”XYZ12345”
+
+sw-revision=”03.02.01”
+
+|Position |Physical “slot” that the VMD is plugged into |MDC_ATTR_ID_POSN (1::2348) |UInt16 |3
+|Locale |Structure defining the device’s country, language and character setting. |MDC_ATTR_LOCALE (1::2600) |Locale |Same as MDS above.
+|===
+
+=== Channel semantics
+
+Channels provide aggregation for closely related parameters. For devices that contain “channels” (e.g., ECG channels or infusion pump fluid channels), these definitions provide a means for differentiating parameters with identical term codes (e.g., fluid source channel rate or volume infused) but contained in different channels. The attributes in the following table apply to all Channel instances in the device specializations defined below:
+
+Table 3.7-1: Channel Attributes
+
+[width="100%",cols="13%,19%,29%,14%,25%",options="header",]
+|===
+|Channel Attributes | | | |
+|Attribute |Description |Term Code |Data Typefootnote:[Data types are further defined in Section _3.4 Basic data type specifications_.] |Values
+|Typefootnote:[Note: A Channel-Type attribute has been proposed, which would allow for parameters such as “secondary infusion channel”.] |General category of the VMD (e.g., infusion pump) |MDC_ATTR_ID_TYPE (1::2351) |TYPE |For example, MDC_DEV_SYS_PT_VENT_VMD (1::4466)
+|Channel-Status |Channel’s operational status |MDC_ATTR_CHAN_STAT (1::2320) |TEXTfootnote:[For the purposes of this technical framework, this data type which is ChannelStatus, an enumerated set of bit flags, is defined as a set of string values. Multiple flags can be asserted at the same time.] |“chan-off”, “chan-not-ready”, “chan-standby”, “chan-transduc-discon”, “chan-hw-discon”
+|Physical-Channel-No |Numeric ID of a hardware channel |MDC_ATTR_CHAN_NUM_PHYS (1::2319) |UInt16 |12
+|Logical-Channel-No |Dynamically assigned channel number; for channels that may have an assignment that changes due to reconfiguration. |MDC_ATTR_CHAN_NUM_LOGICAL (1::2606) |UInt16 |3
+|===
+
+== Reserved
+
+Section reserved for future updates.
+
+*Editor’s Note*: This section is reserved for the Rosetta Terminology Mapping data set specifications. Implementation details such as file specification and design may be captured in an appendix.
+
+== Reserved
+
+This section is reserved for future updates.
+
+*Editor’s Note*: This section is reserved for non-profile specific content modules (e.g., value set specifications) such as for Device Specialization – General.
+
+== Reserved
+
+This section is reserved for future updates.
+
+*Editor’s Note*: This section is reserved for profile specific content modules such as for ACM or MEM/CMMS. Note that Device Specialization profiles have their own section.
+
+== Device specialization content modules
+
+The content module specifications in this section focus on typical device classes or “modalities” that are often found in healthcare delivery and that directly support device specialization integration profiles.
+
+=== Device: Infusion Pump
+
+*Editor’s Note*: This section will be updated with the content from the Device Specialization – Infusion Pump Profile that is currently under development.
+
+==== Containment tree
+
+Infusion pumps organize their information as follows:
+
+Table 7.1.1-1: Infusion Pump Containment Tree
+
+[width="100%",cols="17%,15%,18%,50%",options="header",]
+|===
+|Infusion Pump Containment Tree | | |
+|MDS: Infusion Pump | | |MDC_DEV_PUMP_INFUS_MDS (1::4449)
+| |VMD: Infusion Pump | |MDC_DEV_PUMP_INFUS_VMD (1::4450)
+| | |Channel: Source |MDC_DEV_PUMP_INFUS_CHAN_SOURCE (1::61441)
+| | |Channel: Delivery |MDC_DEV_PUMP_INFUS_CHAN_DELIVERY (1::61442)
+|===
+
+For devices that support a secondary or “piggy-back” channel, two Source channels should be defined, one as the primary channel, and one as the secondary. In other words, source channels are defined for each fluid that is routed to a given delivery or distal path. An infusor VMD shall have one and only one delivery channel. Devices that contain multiple delivery channels shall define multiple infusor VMD instances.
+
+==== Channel: Source
+
+Fluid source infusion channels may contain the following parameters:
+
+Table 7.1.2-1: Infusor Source Channel Parameters
+
+[width="100%",cols="14%,30%,18%,28%,10%",options="header",]
+|===
+|Infusor Source Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Set Fluid Delivery Rate |MDC_FLOW_FLUID_PUMP (2::26712) |Numeric::FLOAT a|
+MDC_DIM_MILLI_L_PER_HR
+
+(4::3122)
+
+|
+|Remaining VTBI |MDC_VOL_FLUID_TBI_REMAIN (2::26800) |Numeric::FLOAT |MDC_DIM_MILLI_L (4::1618) |
+|Duration |MDC_TIME_PD_REMAIN (2::26844) |Numeric::FLOAT |MDC_DIM_MIN (4::2208) |
+|Drug Dose Rate |MDC_FLOW_DRUG_DELIV (2::26732) |Numeric::FLOAT |MDC_DIM_MILLI_G_PER_HR 4:: (3378) / MDC_DIM_MILLI_G_PER_MIN (4::3346) / MDC_DIM_MICRO_G_PER_HR (4::3379) / MDC_DIM_MICRO_G_PER_MIN (4::3347) / MDC_DIM_X_INTL_UNIT_PER_HR (4::5696) |
+|Volume Infused |MDC_VOL_FLUID_DELIV (2::26792) |Numeric::FLOAT-Type |MDC_DIM_MILLI_L (4::1618) |
+|Drug Label |MDC_DRUG_NAME_TYPE (2::53258) |Enumeration::TEXT |N/A |
+|===
+
+==== Channel: Delivery
+
+Fluid delivery infusion channels may contain the following parameters:
+
+Table 7.1.3-1: Infusor Delivery Channel Parameters
+
+[width="100%",cols="13%,27%,19%,26%,15%",options="header",]
+|===
+|Infusor Delivery Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Total Current Rate |MDC_FLOW_FLUID_PUMP (2::26712) |Numeric::FLOAT-Type |MDC_DIM_MILLI_L_PER_HR (4::3122) |
+|Total Volume Infused |MDC_VOL_INFUS_ACTUAL_TOTAL (2::26876) |Numeric::FLOAT-Type |MDC_DIM_MILLI_L (4::1618) |
+|Operational Status |MDC_PUMP_STAT (2::53436) |Enumeration::TEXTfootnote:[This parameter is specified as a set of bit flags, but for this technical framework, the enumerated text strings shall be used.] |N/A |“pump-status-infusing” + “pump-status-kvo” + “pump-status-ready” +” pump-status-standby” + “pump-status-paused”
+|Operational Mode |MDC_PUMP_MODE (2::53432) |Enumeration::TEXT^18^ |N/A |“pump-mode-nominal” + “pump-mode-secondary” + “pump-mode-drug-dosing”
+|===
+
+=== Device: Ventilator
+
+*Editor’s Note*: This section will be updated with the results of the on-going ventilator working group efforts (in conjunction with ISO TC121 and ISO/IEEE 11073); this effort should also ultimately result in a Device Specialization – Ventilator Integration Profile that will then totally replace the content in this section. The information that is currently here tracks the results of the IEEE 11073 ventilator specialization group that was working on the ISO/IEEE 11073-10303 standard.
+
+==== Containment tree
+
+Ventilators organization their information according to the following containment tree:
+
+Table 7.2.1-1: Ventilator Containment Tree
+
+[width="100%",cols="16%,8%,25%,51%",options="header",]
+|===
+|Ventilator Containment Tree | | |
+|MDS: Ventilator | | |MDC_DEV_SYS_PT_VENT_MDS (1::4465)
+| |VMD: Ventilator | |MDC_DEV_SYS_PT_VENT_VMD (1::4466)
+| | |Channel: Ventilator |MDC_DEV_SYS_PT_VENT_CHAN (4467)
+| | |Channel: Nebulizer |
+| |VMD: Airway Multi-Parameter | |MDC_DEV_ANALY_AWAY_MULTI_PARAM_VMD (1::4146)
+| | |Channel: Pressure |MDC_DEV_ANALY_PRESS_AWAY_CHAN (1::4171)
+| | |Channel: Flow |MDC_DEV_ANALY_FLOW_AWAY_CHAN (1::4131)
+| | |Channel: Volume |MDC_DEV_ANALY_VOL_AWAY_CHAN (1::61452)
+| | |Channel: Breath Pattern |MDC_DEV_ANALY_BREATH_PATTERN_CHAN (1::61456)
+| |VMD: Pulse-Oximeter | |
+| | |Channel: Pulse-Ox |
+| | |Channel: Pulse Rate |
+| |VMD: Airway Gas Analyzer | |
+| | |Channel: Oxygenation |
+| | |Channel: NO/NO~2~ |
+| | |Channel: CO~2~ |
+| | |Channel: Resp CO~2~ |
+| | |Channel: Anesthesia Agent |
+|===
+
+==== Channel: Ventilator
+
+The ventilator channel contains the following semantics:
+
+Table 7.2.2-1: Ventilator Channel Parameters
+
+[width="100%",cols="13%,25%,20%,21%,21%",options="header",]
+|===
+|Ventilator Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Operational Mode |MDC_VENT_MODE (2::53280) |Enumeration::TEXT^18^ |N/A a|
+“vent-mode-cpap” +
+
+“vent-mode-simv” +
+
+“vent-mode-insp-assist”
+
+|Set Breath Rate |MDC_RESP_RATE (2::20490) |Numeric::FLOAT-Type |MDC_DIM_RESP_PER_MIN (4::2784) |
+|Set Tidal Volume |MDC_VOL_AWAY_TIDAL_EXP (2::61454) |Numeric::FLOAT-Type |MDC_DIM_MILLI_L (4::1618) |
+|Set Peak Inspiratory Flow |MDC_VENT_FLOW_INSP (2::61440) |Numeric::FLOAT-Type |MDC_DIM_X_L_PER_MIN (4::3072) |
+|Set PEEP a|
+MDC_PRESS_AWAY_END_EXP_POS
+
+(2::20732)
+
+|Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|Set Inspiratory Time a|
+MDC_TIME_PD_INSP
+
+(2::61458)
+
+|Numeric::FLOAT-Type |MDC_DIM_SEC (4::2176) |
+|Set Inspiratory Pause a|
+MDC_VENT_TIME_PD_PAUSE_INSP
+
+(2::61443)
+
+|Numeric::FLOAT-Type |MDC_DIM_SEC (4::2176) |
+|Set Flow Shape |MDC_VENT_FLOW_SHAPE (2::61449) |Enumeration::TEXT |N/A |“waveform-shape-square”; “waveform-shape-decelerating”
+|Set FiO2 |MDC_VENT_CONC_AWAY_O2 (2::20648) |Numeric::FLOAT-Type |MDC_DIM_PERCENT (4::544) |
+|===
+
+==== Channel: Airway Pressure
+
+The airway pressure channel includes the following parameters:
+
+Table 7.2.3-1: Airway Pressure Channel Parameters
+
+[width="100%",cols="15%,34%,18%,20%,13%",options="header",]
+|===
+|Airway Pressure Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Peak Inspiratory Pressure (PIP) |MDC_PRESS_AWAY_INSP_PEAK (2::20745) |Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|Mean Airway Pressure (MAP) |MDC_PRESS_AWAY_MEAN (2::61451) |Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|PEEP |MDC_PRESS_AWAY_END_EXP_POS (2::20732) |Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|===
+
+==== Channel: Airway Volume
+
+The airway volume channel includes the following parameters:
+
+Table 7.2.4-1: Airway Volume Channel Parameters
+
+[width="100%",cols="15%,33%,18%,21%,13%",options="header",]
+|===
+|Airway Volume Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Exhaled Tidal Volume |MDC_VOL_AWAY_TIDAL_EXP (2::61454) |Numeric::FLOAT-Type |MDC_DIM_MILLI_L (4::1618) |
+|Exhaled Minute Volume |MDC_VOL_AWAY_MINUTE_EXP (2::61455) |Numeric::FLOAT-Type |MDC_DIM_X_L (4::1600) |
+|===
+
+==== Channel: Airway Breath Pattern
+
+The airway breath pattern channel includes the following parameters:
+
+Table 7.2.5-1: Airway Breath Pattern Channel Parameters
+
+[width="100%",cols="12%,23%,26%,24%,15%",options="header",]
+|===
+|Airway Breath Pattern Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|I:E Ratio |MDC_RATIO_IE (2::20760) |Numeric::Compound::FLOAT-Type |MDC_DIM_DIMLESS (4::512) |
+| |MDC_RATIO_INSP (2::61461) | | |
+| |MDC_RATIO_EXP (2::61462) | | |
+|Breath Rate |MDC_RESP_RATE (2::20490) |Numeric::FLOAT-Type |MDC_DIM_RESP_PER_MIN (4::2784) |
+|Inspiratory Time |MDC_TIME_PD_INSP (2::61458) |Numeric::FLOAT-Type |MDC_DIM_SEC (4::2176) |
+|===
+
+=== Device: Physiologic Monitor
+
+*Editor’s Note*: The information that is in this section tracks the results of the IEEE 11073 physiological monitor specialization group that was working on the ISO/IEEE 11073-10302 standard. It is anticipated that ultimately, this section shall be replaced by a Device Specialization – Physiological Monitor Integration Profile. Note that many of the Channel sections below contain empty tables. The content is exactly as it has been published previously within the DEV TF-2 Appendix D. The original intent was to add exemplar parameters into these tables; however, that activity was never undertaken. It could be the subject of a fairly simple CP to TF-3 though.
+
+==== Containment tree
+
+Physiological monitors are comprised of a number of different VMDs as indicated in the following containment tree:
+
+Table 7.3-1: Physiological Monitor Containment Tree
+
+[width="100%",cols="16%,8%,28%,48%",options="header",]
+|===
+|Physiological Monitor Containment Tree | | |
+|MDS: Physiological Monitor | | |MDC_DEV_METER_PHYSIO_MULTI_PARAM_MDS (1::4301)
+| |VMD: Blood Pressure | |MDC_DEV_METER_PRESS_BLD_VMD (1::4318)
+| | |Channel: Invasive BP |MDC_DEV_METER_PRESS_BLD_CHAN (1::4319)
+| | |Channel: Non-Invasive BP |MDC_DEV_PRESS_BLD_NONINV_CHAN (1::5151)
+| | |Channel: Pulse Rate BP |
+| |VMD: Temperature | |MDC_DEV_METER_TEMP_VMD (1::4366)
+| | |Channel: Temperature |MDC_DEV_METER_TEMP_CHAN (1::4367)
+| |VMD: Pulse-Oximeter | |MDC_DEV_ANALY_SAT_O2_VMD (1::4106)
+| | |Channel: Pulse-Ox |MDC_DEV_ANALY_SAT_O2_CHAN (1::4107)
+| | |Channel: Pulse Rate Ox |
+| |VMD: ECG Monitor | |MDC_DEV_ECG_VMD (1::4262)
+| | |Channel: ECG |MDC_DEV_ECG_CHAN (1::4263)
+| | |Channel: ECG Resp |MDC_DEV_ECG_RESP_CHAN (1::5131)
+| | |Channel: Heart Rate |MDC_DEV_GEN_RATE_HEART_CHAN (1::4251)
+| | |Channel: Arrhythmia |MDC_DEV_ARRHY_CHAN (1::5135)
+| | |Channel: Ischemia |
+| | |Channel: ECG Measurements |
+| |VMD: Cardiac Output | |MDC_DEV_ANALY_CARD_OUTPUT_VMD (1::4134)
+| | |Channel: Continuous CO |
+| | |Channel: Intermittent CO |
+| |VMD: Hemodynamics Calculator | |MDC_DEV_CALC_HEMO_VMD (1::4210)
+| | |Channel: Hemodynamics Calc. |MDC_DEV_CALC_HEMO_CHAN (1::4211)
+|===
+
+==== Channel: Invasive Blood Pressure
+
+Invasive blood pressure channels may contain the following parameters:
+
+Table 7.3.2-1: Invasive Blood Pressure Channel Parameters
+
+[width="100%",cols="12%,35%,25%,19%,9%",options="header",]
+|===
+|Invasive Blood Pressure Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Arterial Blood Pressure |MDC_PRESS_BLD_ART_ABP (2::18964) |Numeric::Compound::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+| |MDC_PRESS_BLD_ART_ABP_SYS (2::18965) | | |
+| |MDC_PRESS_BLD_ART_ABP_DIA (2::18966) | | |
+| |MDC_PRESS_BLD_ART_ABP_MEAN (2::18967) | | |
+|Wedge Pressure |MDC_PRESS_BLD_ART_PULM_WEDGE (2::18980) |Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|===
+
+==== Channel: Blood Pressure – Non-Invasive
+
+Non-invasive blood pressure channels may contain the following parameters:
+
+Table 7.3.3-1: Non-Invasive Blood Pressure Channel Parameters
+
+[width="100%",cols="12%,32%,26%,20%,10%",options="header",]
+|===
+|Non-Invasive Blood Pressure Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Non-Invasive Blood Pressure |MDC_PRESS_BLD_NONINV (2::18948) |Numeric::Compound::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+| |MDC_PRESS_BLD_NONINV_SYS (2::18949) | | |
+| |MDC_PRESS_BLD_NONINV_DIA (2::18950) | | |
+| |MDC_PRESS_BLD_NONINV_MEAN (2::18951) | | |
+|Cuff Pressure |MDC_PRESS_CUFF (2::19228) |Numeric::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+| |MDC_PRESS_CUFF_SYS (2::19229) | | |
+| |MDC_PRESS_CUFF_DIA (2::19230) | | |
+| |MDC_PRESS_CUFF_MEAN (2::19231) | | |
+|===
+
+==== Channel: Blood Pressure – Pulse Rate
+
+Pulse rate blood pressure channels may contain the following parameters:
+
+Table 7.3.4-1: Pulse Rate (Blood Pressure) Channel Parameters
+
+[width="100%",cols="14%,25%,27%,20%,14%",options="header",]
+|===
+|Pulse Rate (Blood Pressure) Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Pulse Rate |MDC_PRESS_RATE (2:: 18442) |Numeric::Compound::FLOAT-Type |MDC_DIM_CM_H2O (4::3904) |
+|===
+
+==== Channel: Temperature
+
+Temperature channels may contain the following parameters:
+
+Table 7.3.5-1: Temperature Channel Parameters
+
+[width="100%",cols="18%,28%,18%,22%,14%",options="header",]
+|===
+|Temperature Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+|Body Temp |MDC_TEMP_BODY (2::19292) |Numeric::FLOAT-Type |NOM_DIM_DEGC (4:: 6048) |
+|Skin Temp |MDC_TEMP_SKIN (2::19316) |Numeric::FLOAT-Type |NOM_DIM_DEGC (4:: 6048) |
+|Core Temp |MDC_TEMP_CORE (2::19296) |Numeric::FLOAT-Type |NOM_DIM_DEGC (4:: 6048) |
+|===
+
+==== Channel: Pulse Ox
+
+Pulse oximeter channels may contain the following parameters:
+
+Table 7.3.6-1: Pulse Ox Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Pulse Ox Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Pulse Rate Ox
+
+Pulse rate oximeter channels may contain the following parameters:
+
+Table 7.3.7-1: Pulse Rate Ox Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Pulse Rate Ox Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: ECG Monitoring
+
+ECG monitoring channels may contain the following parameters:
+
+Table 7.3.8-1: ECG Monitoring Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|ECG Monitoring Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+====  Channel: ECG Resp
+
+ECG respiration channels may contain the following parameters:
+
+Table 7.3.9-1: ECG Respiration Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|ECG Respiration Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Heart Rate
+
+ECG heart rate channels may contain the following parameters:
+
+Table 7.3.10-1: Heart Rate Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Heart Rate Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Arrhythmia
+
+ECG arrhythmia channels may contain the following parameters:
+
+Table 7.3.11-1: Arrhythmia Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Arrhythmia Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+|===
+
+==== Channel: Ischemia
+
+ECG ischemia channels may contain the following parameters:
+
+Table 7.3.12-1: Ischemia Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Ischemia Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: ECG Measurements
+
+ECG measurement channels may contain the following parameters:
+
+Table 7.3.13-1: ECG Measurements Channel Parameters
+
+[width="100%",cols="23%,19%,19%,19%,20%",options="header",]
+|===
+|ECG Measurements Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Cardiac Output – Continuous 
+
+Continuous cardiac output channels may contain the following parameters:
+
+Table 7.3.14-1: Continuous Cardiac Output Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Continuous Cardiac Output Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Cardiac Output – Intermittent 
+
+Intermittent cardiac output channels may contain the following parameters:
+
+Table 7.3.15-1: Intermittent Cardiac Output Channel Parameters
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Intermittent Cardiac Output Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+==== Channel: Hemodynamics Calculator
+
+Hemodynamics calculator channels may contain the following parameters:
+
+Table 7.3.16-1: Hemodynamics Calculator Channel Parameterst
+
+[width="100%",cols="18%,29%,18%,18%,17%",options="header",]
+|===
+|Hemodynamics Calculator Channel Parameters | | | |
+|Name |Term Code |Data Type |Units |Values
+| | | | |
+| | | | |
+| | | | |
+|===
+
+[#_Toc332637618 .anchor]####Appendices
+
+== Appendix A Reserved
+
+*Editor’s Note*: Examples of potential Volume 3 appendices include:
+
+OID assignments specifically for content modules and even term codes
+
+Detailed data type mappings
+
+RTM design specifications

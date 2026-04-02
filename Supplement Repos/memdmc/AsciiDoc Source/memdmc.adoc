@@ -1,0 +1,652 @@
+*Integrating the Healthcare Enterprise*
+
+image:extracted-media-memdmc/media/image1.jpeg[IHE_LOGO_for_tf-docs,width=171,height=88]
+
+*IHE Devices*
+
+*Technical Framework Supplement*
+
+*PCD Program*
+
+*Medical Equipment Management*
+
+*Device Management Communication*
+
+*(MEMDMC)*
+
+*Rev. 1.5 –Trial Implementation*
+
+Date: September 19, 2024
+
+Author: IHE Devices Technical Committee
+
+Email: dev@ihe.net
+
+*Please verify you have the most recent version of this document.* See https://profiles.ihe.net/DEV/[here] for Trial Implementation and Final Text versions and https://profiles.ihe.net/DEV/#1.2[here] for Public Comment versions.
+
+*Foreword*
+
+This is a supplement to the IHE Devices Technical Framework. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
+
+This supplement is published on September 19, 2024 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the Devices Technical Framework. Comments are invited and can be submitted at https://www.ihe.net/DEV_Public_Comments/[https://www.ihe.net/DEV_Public_Comments].
+
+This supplement describes changes to the existing technical framework documents.
+
+“Boxed” instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
+
+Amend Section X.X by the following:
+
+Where the amendment adds text, make the added text *[.underline]#bold underline#*. Where the amendment removes text, make the removed text *[line-through]#bold strikethrough#*. When entire new sections are added, introduce with editor’s instructions to “add new text” or similar, which for readability are not bolded or underlined.
+
+General information about IHE can be found at http://www.ihe.net/[IHE.net].
+
+Information about the IHE Devices domain can be found at https://www.ihe.net/ihe_domains/[IHE Domains].
+
+Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at https://www.ihe.net/resources/profiles/[Profiles] and https://www.ihe.net/about_ihe/ihe_process/[IHE Processes].
+
+The current version of the IHE Devices Technical Framework can be found at https://profiles.ihe.net/DEV/[Devices Technical Framework].
+
+CONTENTS
+
+link:#introduction-to-this-supplement[Introduction to this Supplement link:#introduction-to-this-supplement[5]]
+
+link:#open-issues-and-questions[Open Issues and Questions link:#open-issues-and-questions[5]]
+
+link:#closed-issues[Closed Issues link:#closed-issues[5]]
+
+link:#history-of-document-changes[History of Document Changes link:#history-of-document-changes[6]]
+
+link:#ihe-technical-frameworks-general-introduction[IHE Technical Frameworks General Introduction link:#ihe-technical-frameworks-general-introduction[7]]
+
+link:#copyright-licenses[9 Copyright Licenses link:#copyright-licenses[7]]
+
+link:#trademark[10 Trademark link:#trademark[7]]
+
+link:#ihe-technical-frameworks-general-introduction-appendices[IHE Technical Frameworks General Introduction Appendices link:#ihe-technical-frameworks-general-introduction-appendices[8]]
+
+link:#_Toc177638840[Appendix A – Actors link:#_Toc177638840[8]]
+
+link:#_Toc177638841[Appendix B – Transactions link:#_Toc177638841[9]]
+
+link:#_Toc177638842[Glossary link:#_Toc177638842[9]]
+
+link:#_Toc177638843[*Volume 1 – Profiles link:#_Toc177638843[11]*]
+
+link:#copyright-licenses-1[Copyright Licenses link:#copyright-licenses-1[11]]
+
+link:#domain-specific-additions[Domain-specific additions link:#domain-specific-additions[11]]
+
+link:#x-medical-equipment-management-device-management-communication-memdmc-profile[X Medical Equipment Management Device Management Communication (MEMDMC) Profile link:#x-medical-equipment-management-device-management-communication-memdmc-profile[12]]
+
+link:#x.1-memdmc-actors-transactions-and-content-modules[X.1 MEMDMC Actors&#44; Transactions&#44; and Content Modules link:#x.1-memdmc-actors-transactions-and-content-modules[12]]
+
+link:#x.1.1-actor-descriptions-and-actor-profile-requirements[X.1.1 Actor Descriptions and Actor Profile Requirements link:#x.1.1-actor-descriptions-and-actor-profile-requirements[13]]
+
+link:#x.1.1.1-device-management-information-reporter-dmir[X.1.1.1 Device Management Information Reporter (DMIR) link:#x.1.1.1-device-management-information-reporter-dmir[13]]
+
+link:#x.1.1.2-device-management-information-consumer-dmic[X.1.1.2 Device Management Information Consumer (DMIC) link:#x.1.1.2-device-management-information-consumer-dmic[13]]
+
+link:#x.2-memdmc-actor-options[X.2 MEMDMC Actor Options link:#x.2-memdmc-actor-options[14]]
+
+link:#x.3-memdmc-required-actor-groupings[X.3 MEMDMC Required Actor Groupings link:#x.3-memdmc-required-actor-groupings[14]]
+
+link:#x.4-memdmc-overview[X.4 MEMDMC Overview link:#x.4-memdmc-overview[14]]
+
+link:#x.4.1-concepts[X.4.1 Concepts link:#x.4.1-concepts[14]]
+
+link:#x.4.2-use-cases[X.4.2 Use Cases link:#x.4.2-use-cases[14]]
+
+link:#x.4.2.1-use-case-1-equipment-observations-to-cmms[X.4.2.1 Use Case #1: Equipment Observations to CMMS link:#x.4.2.1-use-case-1-equipment-observations-to-cmms[14]]
+
+link:#x.4.2.1.1-equipment-observations-to-cmms-use-case-description[X.4.2.1.1 Equipment Observations to CMMS Use Case Description link:#x.4.2.1.1-equipment-observations-to-cmms-use-case-description[15]]
+
+link:#x.4.2.1.2-equipment-observations-to-process-flow[X.4.2.1.2 Equipment Observations to Process Flow link:#x.4.2.1.2-equipment-observations-to-process-flow[15]]
+
+link:#x.5-memdmc-security-considerations[X.5 MEMDMC Security Considerations link:#x.5-memdmc-security-considerations[16]]
+
+link:#x.6-memdmc-cross-profile-considerations[X.6 MEMDMC Cross Profile Considerations link:#x.6-memdmc-cross-profile-considerations[16]]
+
+link:#__RefHeading__51_897662812[*Volume 2 – Transactions link:#__RefHeading__51_897662812[17]*]
+
+link:#device-management-information-observation-dmio-pcd-15[3.15 Device Management Information Observation (DMIO) [PCD-15] link:#device-management-information-observation-dmio-pcd-15[17]]
+
+link:#scope[3.15.1 Scope link:#scope[17]]
+
+link:#actor-roles[3.15.2 Actor Roles link:#actor-roles[17]]
+
+link:#referenced-standards[3.15.3 Referenced Standards link:#referenced-standards[18]]
+
+link:#messages[3.15.4 Messages link:#messages[19]]
+
+link:#device-management-information-observation-dmio-pcd-15-1[3.15.4.1 Device Management Information Observation (DMIO) [PCD-15] link:#device-management-information-observation-dmio-pcd-15-1[19]]
+
+link:#hl7-conformance-statement[3.15.4.1.2 HL7 Conformance Statement link:#hl7-conformance-statement[19]]
+
+link:#device-management-information-observation-pcd-15-orur44oru_r44-static-definition[3.15.4.1.3 Device Management Information Observation [PCD-15] (ORU^R44^ORU_R44) Static Definition link:#device-management-information-observation-pcd-15-orur44oru_r44-static-definition[20]]
+
+link:#trigger-events[3.15.4.1.4 Trigger Events link:#trigger-events[21]]
+
+link:#message-semantics[3.15.4.1.5 Message Semantics link:#message-semantics[21]]
+
+link:#expected-actions[3.15.4.1.6 Expected Actions link:#expected-actions[22]]
+
+link:#security-considerations[3.15.5 Security Considerations link:#security-considerations[22]]
+
+link:#volume-2-namespace-additions[Volume 2 Namespace Additions link:#volume-2-namespace-additions[22]]
+
+link:#_Toc177638875[Appendices to Volume 1 link:#_Toc177638875[23]]
+
+link:#appendix-a-transaction-examples[Appendix A – Transaction Examples link:#appendix-a-transaction-examples[23]]
+
+link:#a.1-device-management-information-observation[A.1 Device Management Information Observation link:#a.1-device-management-information-observation[23]]
+
+link:#__RefHeading__73_897662812[*Volume 3 – Content Modules link:#__RefHeading__73_897662812[25]*]
+
+link:#namespaces-and-vocabularies[5 Namespaces and Vocabularies link:#namespaces-and-vocabularies[25]]
+
+link:#content-modules[6 Content Modules link:#content-modules[25]]
+
+link:#_Toc177638881[Volume 3 Namespace Additions link:#_Toc177638881[25]]
+
+link:#__RefHeading__81_897662812[*Volume 4 – National Extensions link:#__RefHeading__81_897662812[26]*]
+
+link:#national-extensions[4 National Extensions link:#national-extensions[26]]
+
+== Introduction to this Supplement
+
+This supplement affects Volumes 1 and 2 of the Devices Technical Framework. The supplement adds a new profile, new actors, new triggers, and a new transaction. This supplement defines a profile for the communication of detailed device component identification, hardware and software versioning information, and device, battery, and power source status in the absence of patient observations, alerts, or event notifications.
+
+=== Open Issues and Questions
+
+Identification of some observation identifications (MDC & REFID) may not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature. Submissions will be required as needed. In the interim, an MDC value of zero and a REFID prefix of MDCX shall be utilized until official values are assigned. After provisional values are assigned they are expected to appear in the most recent update and version of the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once assigned official values, implementations shall use the assigned values.
+
+A unique to this profile HL7 v2 message trigger has been granted by HL7 v2 Orders and Observations to replace current use of trigger value R01. This profile utilizes unsolicited observations and therefore MSH-9-1 Message Code shall remain ORU. The HL7 that granted trigger value is R44, is queued to first appear in a v 2.9.x release of HL7 v2, and replaces R01 in the MSH-9 Message Type field in both MSH-9-2 Trigger and MSH-9-3 Message Structure components in examples and references within this document have been updated accordingly. This trigger change while impacting to existing products, test tools, and deployments will allow transactions of this profile to utilize a message structure unique to this profile which will permit discontinuance of use of the message structure associated with R01. This change will allow transactions of this profile to exclude the R01 structure required HL7 message segments associated with electronic patient healthcare information (ePHI) contained in the PID Patient Identification and PV1 Patient Visit segments. Observation producer and consumer actors associated with this profile do not make use of and do not administer ePHI. Removal of ePHI message content which is not required by this profile assures patient confidentiality and avoids transaction consuming actors from requiring a HIPAA (Health Insurance Portability and Accountability Act of 1996) Business Associate agreement. This migration will also allow the deprecation of the profile transaction options associated with ePHI.
+
+When copying OBX instances from consumed transactions of this profile to reporter transactions of other profiles, such as DEC, IPEC, ACM, etc., the dotted notation values in OBX-4 should bear scrutiny for hierarchical conflicts with OBX-4 values of OBX instances associated with the base reporter content into which the OBX instances of this profile are being copied.
+
+=== Closed Issues
+
+Communication of the same information that this profile communicates as observations in conjunction with the data, alert, and event use cases associated with existing PCD profiles can be accomplished using the observation documentation found in this profile as additional observations to existing transactions in association with existing actors without the requirement for vendor adoption of this new profile. The justification for this additional profile is the definition of a new actor type (CMMS, or more specifically a CEMS) which is distinct from existing actors as well as the trigger condition which is unrelated to any device associated patient.
+
+Other methods for communication of equipment information exist in the operating environment (SNMP, vendor proprietary SOAP/XML, etc.) today, are expected to continue to exist, but are not expected to integrate with medical device data communication.
+
+=== History of Document Changes
+
+This section provides a brief summary of changes and additions to this document.
+
+[width="100%",cols="15%,14%,71%",options="header",]
+|===
+|Date |Document Revision |Change Summary
+|2024-SEP |1.5 a|
+Updated for approved CPs, housekeeping corrections
+
+[width="100%",cols="18%,27%,55%",options="header",]
+!===
+!CP # !CP Approval Date !CP Title
+!DEV-003 !2024-06-12 !MEM DMC Trigger and Template
+!===
+
+|2023-04-07 |1.4 a|
+Updated for approved CPs, housekeeping corrections, and replacing MDCXs with allocated MDCs and REFIDs.
+
+The following CPs were integrated.
+
+[width="100%",cols="19%,26%,55%",options="header",]
+!===
+!CP # !CP Approval Date !CP Title
+!111 !2015-02-27 !Move equipment name from OBX-18 to OBX-5
+!119 !2015-03-06 !Clarification of Observation Result Status OBX-11 as F
+!152 !2020-11-20 !MEMDMC Use of MDC_OBS_MEM in OBR-4 in [PCD-15]
+!===
+
+|2017-11-09 |1.3 |Updated for approved CPs, housekeeping corrections, and explanation that MDCs and REFIDs need to be standardized and that they will appear first in RTMMS.
+|2015-10-14 |1.2 |Updated for approved CPs and housekeeping corrections.
+|===
+
+== IHE Technical Frameworks General Introduction
+
+The https://profiles.ihe.net/GeneralIntro[IHE Technical Frameworks General Introduction] is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
+
+== Copyright Licenses
+
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-9.html[Section 9 - Copyright Licenses] for copyright license information for frequently referenced base standards. Information pertaining to the use of IHE International copyrighted materials is also available there.
+
+== Trademark
+
+IHE^®^ and the IHE logo are trademarks of the Healthcare Information Management Systems Society in the United States and trademarks of IHE Europe in the European Community. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-10.html[Section 10 - Trademark] for information on their use.
+
+== IHE Technical Frameworks General Introduction Appendices
+
+The https://profiles.ihe.net/GeneralIntro/index.html[IHE Technical Framework General Introduction Appendices] are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate.
+
+Update the following appendices to the General Introduction as indicated below. Note that these are *not* appendices to this domain’s Technical Framework (TF-1, TF-2, TF-3 or TF-4) but rather, they are appendices to the IHE Technical Frameworks General Introduction located https://profiles.ihe.net/GeneralIntro/index.html[here].
+
+*NEW: REQUIRED APPROVAL OF ACTORS, TRANSACTIONS and TERMS -* To avoid duplication and ensure consistency across domains, all *new or modified* actors, transactions and glossary terms need approval by IHE’s Domain Coordination Committee (DCC) before they are published in a trial implementation supplement. Please see https://wiki.ihe.net/index.php/Approval_Process_for_IHE_Actors,_Transactions_and_Glossary_Terms[this Wiki page] for additional guidance and links to the forms for approval submission.
+
+== https://profiles.ihe.net/GeneralIntro/ch-A.html[[#_Toc177638840 .anchor]####Appendix A] – Actors
+
+Add the following *new or modified* actors to the https://profiles.ihe.net/GeneralIntro/ch-A.html[IHE Technical Frameworks General Introduction Appendix A]:
+
+The Device Management Information Reporter (DMIR) produces observations.
+
+The Device Management Information Consumer (DMIC) consumes observations.
+
+[width="100%",cols="47%,53%",]
+|===
+|Actor |Definition
+|Device Management Information Reporter (DMIR) |Transmits observations of device identification (unique identification, versions for software, firmware, hardware) and status (power, power source, battery, self-test, etc.).
+|Device Management Information Consumer (DMIC) |Receives device identification and status information.
+|===
+
+The Device Management Information Reporter (DMIR) may also be an actor in a different profile (DEC DOR, ACM AR, IPEC DOR). The Device Management Information Consumer (DMIC) is a new and distinct destination actor and is likely to be a Computerized Maintenance Management System (CMMS), or more specifically a Clinical Equipment Management System (CEMS), but may also be an actor in a different profile (DEC DOC, ACM AM, IPEC DOC).
+
+== https://profiles.ihe.net/GeneralIntro/ch-B.html[[#_Toc177638841 .anchor]####Appendix B] – Transactions
+
+Add the following *new or modified* transactions to the https://profiles.ihe.net/GeneralIntro/ch-B.html[IHE Technical Frameworks General Introduction Appendix B]:
+
+Device Management Information Observation (DMIO) [PCD-15] (from DMIR to DMIC)
+
+[width="100%",cols="30%,70%",]
+|===
+|New (or modified) Transaction Name and Number |Definition
+|Device Management Information Observation (DMIO) [PCD-15] |Contains observations of device identification (unique identification, versions for software, firmware, hardware) and status (power, power source, battery, self-test, etc.). This transaction might not commonly contain patient associated information and would likely be destined for a CMMS and not for an EMR for EHR storage.
+|===
+
+== Glossary
+
+Add the following *new or modified* glossary terms to the https://profiles.ihe.net/GeneralIntro/ch-D.html[IHE Technical Frameworks General Introduction Appendix D]:
+
+[width="100%",cols="26%,44%,14%,16%",options="header",]
+|===
+|New (or modified) Glossary Term |Definition |Synonyms a|
+Acronym/
+
+Abbreviation
+
+|Clinical Equipment Management System |A clinical equipment specific variant of a CMM | |CEMS
+|Computerized Maintenance Management System |This is the system which the hospital makes use of to maintain its inventory of medical devices, their identification, their status, their software, firmware, and hardware versioning information and history. This is a system for which reception of device location observation is well suited as a means of identifying the last known location of equipment in need of servicing, repairs, or version upgrades. | |CMMS
+|Electronic Protected Health Information |Protected health information (PHI) that is produced, saved, transferred or received in an electronic form. In the United States, ePHI management is covered under the Health Insurance Portability and Accountability Act of 1996 (HIPAA) Security Rule. | |ePHI
+|Health Insurance Portability and Accountability Act of 1996 |The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that required the creation of national standards to protect sensitive patient health information from being disclosed without the patient’s consent or knowledge. The US Department of Health and Human Services (HHS) issued the HIPAA Privacy Rule to implement the requirements of HIPAA. The HIPAA Security Rule protects a subset of information covered by the Privacy Rule. See https://www.cdc.gov/phlp/publications/topic/hipaa.html. | |HIPAA
+|===
+
+[#_Toc177638843 .anchor]####Volume 1 – Profiles
+
+=== Copyright Licenses
+
+Add the following to the IHE Technical Frameworks General Introduction Copyright section:
+
+NA
+
+=== Domain-specific additions
+
+None
+
+Add Section X
+
+== X Medical Equipment Management Device Management Communication (MEMDMC) Profile
+
+Existing profile transaction observation information does not include detailed device component identification, hardware and software versioning information, and device, self-test, battery, and power source status.
+
+Specific triggers, transactions, and destination actors in existing profiles do not exist for the sole purpose of communication of detailed device component identification, hardware and software versioning information, and device, battery, and power source status in the absence of patient observations, alerts, or event notifications. The absence of the communication of this information outside of patient observations, alerts, or event notifications reduces the effectiveness of CMMS solutions and impacts the effectiveness of the management of medical equipment by not permitting the tracking of hardware and software versioning information across multiple patient uses for the same device or battery utilization and battery cycling in the absence of patient associations.
+
+This is not the reporting of a patient associated medical device observational data as would be accomplished using the Device to Enterprise Communication (DEC) Profile.
+
+This is not the reporting of a patient associated operational event as would be accomplished using an Event Communication (EC) associated profile or device specialization, such as Infusion Pump Event Communication (IPEC).
+
+This is not the reporting of an Alert for response by a person as that would be accomplished by the Alert Communication Management (ACM) Profile.
+
+This profile is a combination of profile types as it defines workflow through use case specification and transport through its described use of the HL7 v2 and IEEE 11073 standards for information communication.
+
+=== X.1 MEMDMC Actors, Transactions, and Content Modules
+
+This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A at http://www.ihe.net/Technical_Frameworks/[http://www.ihe.net/Technical_Frameworks].
+
+Figure X.1-1 shows the actors directly involved in the MEMDMC Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a mandatory grouping are shown in conjoined boxes.
+
+Figure X.1-1: MEMDMC Actor Diagram
+
+Table X.1-1 lists the transactions for each actor directly involved in the MEMDMC Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
+
+Table X.1-1: MEMDMC Profile - Actors and Transactions
+
+[width="99%",cols="24%,30%,22%,24%",options="header",]
+|===
+|Actors |Transactions |Optionality |Reference
+|DMIR |DMIO [PCD-15] |R |PCD TF-2: 3.15
+|DMIC |DMIO [PCD-15] |R |PCD TF-2: 3.15
+|===
+
+==== X.1.1 Actor Descriptions and Actor Profile Requirements
+
+Most requirements are documented in Transactions (Volume 2) and Content Modules (Volume 3). This section documents any additional requirements on profile’s actors.
+
+===== X.1.1.1 Device Management Information Reporter (DMIR)
+
+The Device Management Information Reporter (DMIR) may also be an observation transaction sending actor in other IHE PCD profiles, such as a DEC DOR, an ACM AR, or an IPEC DOR. If that is the case then the observations defined in this document may be included in existing observation content for those profiles without adoption of this profile, unless the destination to which the observations are being sent is a CMMS and not an EMR/EHR system. If that the case then this profile should be implemented.
+
+===== X.1.1.2 Device Management Information Consumer (DMIC)
+
+It is not highly probable that the Device Management Information Consumer (DMIC) is an actor in other IHE PCD profiles. The CMMS specific role of the DMIC Actor is the justification for this unique profile as a medical device sending the observations is likely to require the destination configuration and message content for the DMIC Actor to be different from those of other IHE profile actors, such as the EMR/EHR system.
+
+=== X.2 MEMDMC Actor Options
+
+Options that may be selected for each actor in this profile, if any, are listed in the Table X.2-1. Dependencies between options when applicable are specified in notes.
+
+Table X.2-1: MEMDMC - Actors and Options
+
+[width="100%",cols="26%,44%,30%",options="header",]
+|===
+|Actor |Option Name |Reference
+|DMIR |No option defined |--
+|DMIC |No option defined |--
+|===
+
+=== X.3 MEMDMC Required Actor Groupings 
+
+There are no required actor groupings.
+
+=== X.4 MEMDMC Overview
+
+MEMDMC is focused with sending equipment identification observations whether or not there is a patient associated with the device to equipment management systems, such as CMMS.
+
+==== X.4.1 Concepts
+
+Equipment identification, configuration, and status information needs to be recorded for effective management of the equipment, whether or not there is a patient currently associated with the equipment.
+
+==== X.4.2 Use Cases
+
+If the observations identified in this profile are added to messages of existing profiles then conformance to this profile is not required. However if the destination of the observations is not in conjunction with a device associated patient or are meant to be received by an equipment management system (CMMS) this conformance to this profile is required.
+
+===== X.4.2.1 Use Case #1: Equipment Observations to CMMS
+
+In this use case equipment observations are sent to the CMMS, whether or not the equipment is currently associated with a patient.
+
+If the observation is of a condition for which notification of a person is required for prioritized attention then that should be an additional alert notification to an ACM AM and this profile is not appropriate. Simply define a new alert and add the observation to it as an ACM [PCD-04] transaction.
+
+Depending upon information in the observation sent to the CMMS, the CMMS can choose to originate an ACM [PCD-04] advisory alert transaction as an ACM AR Actor in order to get someone to tend to an equipment issue.
+
+====== X.4.2.1.1 Equipment Observations to CMMS Use Case Description
+
+When a piece of equipment undergoes a status or configuration change, ends a battery charging cycle, or executes a self-test, and has a status to report, it reports it as an observation. The following is a sample list of situations under which observations would be reported. This is not a complete list as new observations are expected to be able to be accommodated without updating this profile. If equipment location tracking information is available (where embedded or through coordination with a gateway) that information can be included as additional observations in this transaction without adopting the MEMLS Profile.
+
+* Equipment power up (a last seen indication)
+* Equipment network configuration is about to change (in case the change takes it offline)
+* Equipment power transitions from mains to battery or back to mains (in case of battery failure)
+* Self-test status is being reported and whether it failed or not (last known health)
+* Battery status/level for all batteries is being reported (last known battery health)
+* Battery charging success is being reported (last known battery health)
+* Preventative maintenance cycle status being reported (metering)
+
+This is not the reporting of a patient associated operational event as would be accomplished using an Event Communication (EC) associated profile or device specialization, such as Infusion Pump Event Communication (IPEC).
+
+This is not the reporting of an Alert for response by a person as that would be accomplished by the Alert Communication Management (ACM) Profile.
+
+====== X.4.2.1.2 Equipment Observations to Process Flow
+
+Figure X.4.2.1.2-1: Basic Process Flow in MEMDMC Profile
+
+=== X.5 MEMDMC Security Considerations
+
+During the profile development there were no unusual security or privacy concerns identified. There are no mandatory security controls but the implementer is encouraged to use the underlying security and privacy profiles from ITI that are appropriate to the transports such as the Audit Trail and Node Authentication (ATNA) Profile. The operational environment risk assessment, following ISO 80001, will determine the actual security and safety controls employed.
+
+=== X.6 MEMDMC Cross Profile Considerations
+
+A DMIR is likely to also be a DEC DOR, an ACM AR, an IPEC DOR, or a MEMLS LIOR. There is no grouping required.
+
+[#__RefHeading__51_897662812 .anchor]##
+
+Volume 2 – Transactions
+
+Add Section 3.15
+
+=== 3.15 Device Management Information Observation (DMIO) [PCD-15]
+
+==== 3.15.1 Scope
+
+This transaction is used to report equipment management observations whether or not the equipment is currently associated with a patient.
+
+==== 3.15.2 Actor Roles
+
+The DMIR sends the DMIO to the DMIC.
+
+Figure 3.15.2-1: Use Case Diagram
+
+The roles in this transaction are defined in the following table and may be played by the actors shown here:
+
+Table 3.15.2-1: Actor Roles
+
+[width="100%",cols="18%,82%",]
+|===
+|*Role:* |Producer
+|*Actor(s):* a|
+The following actors may play the role of Producer:
+
+____
+Device Management Information Reporter (DMIR)
+____
+
+|*Role:* |Consumer
+|*Actor(s):* a|
+The following actors may play the role of Consumer:
+
+____
+Device Management Information Consumer (DMIC)
+____
+
+|===
+
+==== 3.15.3 Referenced Standards
+
+HL7 v2.6, transitioning to v2.9.x once published for new trigger/template, Chapter 7 Observations
+
+IEEE 11073-10101, minimally version B, with additional MDC/REFID values not yet in the standard (as identified by MDCX indicated value of zero and the interim REFID values).
+
+Identification of some observation identifications (MDC & REFID) might not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature in which case a submission will be required. These are maintained external to this profile and thus have a low probability of new change proposals to this profile. After values are assigned they are likely to appear in the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once assigned official values implementations shall use the assigned values.
+
+Below is a mapping table with an indication as to whether or not the REFID string changed from the trial to the allocated values. To reduce transcription errors, table content has been kept to a minimum. For additional details, such as value descriptions, units of measure, partition codes, and enumerations, refer to the IEEE 11073-10101 standard (normative and balloted versions) or RTMMS.
+
+Table 3.15.3-1: IEEE Nomenclature Mapping from preliminary to assigned
+
+[width="100%",cols="47%,41%,12%",options="header",]
+|===
+|Trial Values |Allocated Values |Changed
+|none |69135^MDC_OBS_MEM^MDC |Y
+a|
+0^MDCX_DMC_ATTR_POWER_STAT^MDC
+
+or
+
+67925^MDC_DMC_ATTR_POWER_STAT^MDC
+
+|67925^MDC_ATTR_POWER_STAT^MDC |N
+|===
+
+==== 3.15.4 Messages
+
+Figure 3.15.4-1: Interaction Diagram
+
+===== 3.15.4.1 Device Management Information Observation (DMIO) [PCD-15]
+
+The observations are mapped to OBX segment and contained under an OBR segment.
+
+A single transaction should report a single observation about a single piece of equipment.
+
+More than one sending actor instance can send to the same receiving actor instance.
+
+====== 3.15.4.1.2 HL7 Conformance Statement
+
+The conformance statement for this interaction described below is adapted from HL7 version 2.6 with use of the Participation Information (PRT) segment from HL7 version 2.7.
+
+Table 3.15.4.1.2-1: Device Management Information Observation [PCD-15] Transaction Conformance
+
+[width="100%",cols="35%,65%",options="header",]
+|===
+|Publication ID: |R44
+|Type: |Unsolicited
+|Publication Name: |IHEPCD-15DeviceManagementInformationObservation
+|Trigger: |See Section 3.15.4.1.5 Trigger Events
+|Mode: |Immediate
+|Response: |ORU^R44^ORU_R44
+|Characteristics: |Sends device management information observation data
+|Purpose: |Report Device Management Information Observation from DMIR to DMIC
+|Based on Segment Pattern: |R44
+|===
+
+====== 3.15.4.1.3 Device Management Information Observation [PCD-15] (ORU^R44^ORU_R44) Static Definition
+
+The Device Management Information Observation [PCD-15] message is used to communicate device management information observation data from a Device Management Information Observation Reporter (DMIR) to a Device Management Information Observation Consumer (DMIC).
+
+Common HL7 segments are defined in DEV TF-2: Appendix B. Sections below discuss considerations specific to [PCD-15].
+
+Table 3.15.4.1.3-1: ORU^R44^ORU_R44 HL7 Attribute Table
+
+[width="100%",cols="13%,39%,16%,15%,17%",options="header",]
+|===
+|Segment |ORU Message |Usage |Card. |HL7 Ref
+|MSH |Message Header Segment |R |[1..1] |2.15.9
+|OBR |Observation Request Segment |R |[1..n] |7.4.1
+|OBX |Observation Result Segment |R |[1..n] |7.4.2
+|[PRT] |Participation Information Segment |O |[0..n] See Note |7.4.4 (V2.7)
+|===
+
+Note: Use of PRT is required for communicating identification of referenced other equipment.
+
+Table 3.15.4.1.3-2: ORU^R44^ORU_R44 Static Definition
+
+[width="100%",cols="47%,53%",options="header",]
+|===
+|ORU^R44^ORU_R44 |Device Management Information Observation Message
+|MSH |Message Header
+|[\{SFT}] |Software Segment
+|\{ |--- REPORT DEVICE MANAGEMENT INFORMATION OBSERVATION begin
+|OBR |Device Management Information Observation Identification
+|\{ |--- OBSERVATION begin
+|\{OBX} |Device Management Information observations relative to OBR
+|[PRT] |Participation identifies person or equipment
+|} |--- OBSERVATION end
+|} |--- REPORT MANAGEMENT INFORMATION OBSERVATION end
+|===
+
+Note: Per ORU R44 message template, PID and PV1 segments shall not be used, (X) usage. If patient identification or patient assigned location are to be communicated between DMIR and DMIC actors in a specific deployment, it shall only be through deployment documented concurrence between DMIR and DMIC actor vendor system representatives, preceded by review of justifications or requirements and HIPAA implications regarding sending and receiving of ePHI, and shall only be communicated using the PRT segment.
+
+====== 3.15.4.1.4 Trigger Events
+
+The HL7 trigger event is ORU^R44^ORU_R44.
+
+The identification of a MEMDMC packaged group of observations shall be encoded in the value of OBR-4 Universal Service Identifier (CWE data type) of the OBR segment as
+
+69135^MDC_OBS_MEM^MDC
+
+Specific MDC codes and REFIDs for triggers are listed in the Rosetta Terminology Mapping Management System (RTMMS). This permits new triggers to be added for use in OBX-5 Observation Value field of OBX Observation/Result instance segments to be used by this profile without a version update of this document.
+
+[arabic]
+. Equipment power up
+. Equipment network configuration is about to change
+. Equipment power transitions from mains to battery or back to mains
+. Self-test status is being reported (whether it failed or not)
+. Battery status/level for all batteries is being reported
+. Battery charging success is being reported
+
+====== 3.15.4.1.5 Message Semantics
+
+The message is an HL7 observation. The content of the message is governed by HL7, IHE PCD Technical Framework and this profile. The objects for which the observations are being reported are governed by IEEE 11073.
+
+The MDS, VMD, CHAN, and METRICs are to be reported per the IHE PCD Technical Framework.
+
+When a [PCD-15] transaction is used for the purpose of communication of a packaged group of medical device observations for the purpose of equipment management primary identification of a MEMDMC group of observations shall be encoded in the value of OBR-4 Universal Service Identifier (CWE data type) of the OBR segment as
+
+69135^MDC_OBS_MEM^MDC
+
+Specific MDC codes and REFIDs for triggers and observations are listed in the Rosetta Terminology Mapping Management System (RTMMS). This permits new triggers and observations to be added without a version update of this document.
+
+Identification of some observation identifications (MDC & REFID) may not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature. Submissions will be required as needed. In the interim an MDC value of zero and a REFID prefix of MDCX shall be utilized until provisional values have been assigned. After provisional values are assigned they are expected to appear in the most recent update and version of the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once provisional values are assigned implementations shall use the assigned values.
+
+Indicating Observation Result Status (OBX-11) as a value of R (Results entered – not verified) establishes an expectation that someone will manually verify the value of the observation. Review and verification of DMC Profile specific observations (primarily observations of equipment battery, power, and self-test status) is not expected as they change over time and requiring someone to review and certify them is a workload with little return for the effort. Therefore DMC observations shall indicate a value of F (Final) in Observation Result Status (OBX-11).
+
+====== 3.15.4.1.6 Expected Actions
+
+In response to the receipt of the message the receiver will generate an HL7® acknowledgement to advise the sending of the status of the receipt of the message that was sent.
+
+As a result of receiving the observation the receiver can store the information for later retrieval or the information can be used to trigger the production of transactions in other IHE profiles, such the generation of an ACM alert.
+
+==== 3.15.5 Security Considerations
+
+During the profile development there were no unusual security or privacy concerns identified. There are no mandatory security controls but the implementer is encouraged to use the underlying security and privacy profiles from ITI that are appropriate to the transports such as the Audit Trail and Node Authentication (ATNA) Profile. The operational environment risk assessment, following ISO 80001, will determine the actual security and safety controls employed.
+
+== Volume 2 Namespace Additions
+
+Add the following terms to the IHE General Introduction Appendix G:
+
+The following OIDs have been allocated to the MEMDMC Profile.
+
+Specific IHE-PCD Transactions: 1.3.6.1.4.1.19376.1.6.15.9 / 1.3.6.1.4.1.19376.1.6.1.15.1 (PCD-15).
+
+The 1.3.6.1.4.1.19376.1.6.1.15.1 will appear in MSH-21 to identify the [PCD-15] transaction.
+
+Specific IHE-PCD Conformance profiles: 1.3.6.1.4.1.19376.1.6.6.15.1 [PCD-15]
+
+[#_Toc177638875 .anchor]####Appendices to Volume 1
+
+== Appendix A – Transaction Examples
+
+These are the transaction examples for this profile.
+
+=== A.1 Device Management Information Observation
+
+The Device Management Information Observation (DMIO) [PCD-15] is the report of an observation of the identification, status, or configuration of a piece of equipment and the reason for the report.
+
+Observation identifiers of MDCX with a value of zero indicate the MDC and REFID have not yet been officially assigned. Once officially assigned the MDC code will change from zero to its assigned value and the REFID will change to the officially assigned string and implementations shall use values published in the standard
+
+Identification of some observation identifications (MDC & REFID) are not currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature and so a submission will be required. After values are assigned they are likely to appear in the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once assigned official values implementations shall use the assigned values.
+
+The equipment name shall be in a separate OBX segment occurrence with an observation containment identifying MDC/REFID in OBX-3 (0^MDCX_LS_ATTR_NAME^MDC is proposed until an RTMMS defined value is available) with the equipment name as the observation value in OBX-5 Observation Value.
+
+The following example is for a PCD-15 message for an infusion pump.
+
+MSH|^~\&|Device Vendor^001A010000000001^EUI-64||Device Customer||20150119221713-0000||ORU^R44^ORU_R44|1421727433|P|2.6|||AL|NE||UNICODE UTF-8|en^English^ISO639||IHE_PCD_015^IHE PCD^1.3.6.1.4.1.19376.1.6.1.15.1^ISO
+
+OBR|1|2000101^Medfusion 4000^001A010000000001^EUI-64|2000101^Medfusion 4000^001A010000000001^EUI-64|69135^MDC_OBS_MEM^MDC |||20150119221713-0000
+
+OBX|1|ST|69985^MDC_DEV_PUMP_INFUS_MDS^MDC|1.0.0.0|||||||F
+
+OBX|2|ST|67880^MDC_ATTR_ID_MODEL^MDC|1.0.0.1|manufacturer= Device Vendor model=Medfusion 4000||20150119221713-0000||||F
+
+OBX|3|ST|67972^MDC_ATTR_SYS_ID^MDC|1.0.0.2|2000101^Medfusion 4000^001A010000000001^EUI-64||20150119221713-0000||||F
+
+OBX|4|CWE|67925^MDC_ ATTR_POWER_STAT^MDC|1.0.0.3|^OFF||20150119221713-0000||||F|||||||2000101^Medfusion 4000^001A010000000001^EUI-64
+
+OBX|5|ST|68512^MDC_ATTR_LS_NAME^MDC|LOC|IV Pump 2012078||||||F|||20150127110822.229-0800
+
+OBX|6|PL|68513^MDC_ATTR_LS_LOCATION^MDC|LOC|^^^Fraser Health^^^North Building^Main Floor^Nurse Station||||||F|||20150127110822.229-0800||||112213000174^GuardRFID^^L
+
+OBX|7|NM|68525^MDC_ATTR_LS_COORD_X^MDC|LOC|406|263441^MDC_DIM_CENTI_M^MDC|||||F|||20150127110822.229-0800||||112213000174^GuardRFID^^L
+
+OBX|8|NM|68526^MDC_ATTR_LS_COORD_Y^MDC|LOC|917|263441^MDC_DIM_CENTI_M^MDC|||||F|||20150127110822.229-0800||||112213000174^GuardRFID^^L
+
+OBX|9|NM|68527^MDC_ATTR_LS_COORD_Z^MDC|LOC|0|263441^MDC_DIM_CENTI_M^MDC|||||F|||20150127110822.229-0800||||112213000174^GuardRFID^^L
+
+[#__RefHeading__73_897662812 .anchor]####Volume 3 – Content Modules
+
+== 5 Namespaces and Vocabularies
+
+Add to Section 5 Namespaces and Vocabularies
+
+None
+
+== 6 Content Modules
+
+Not applicable. CDA is not being produced.
+
+== Volume 3 Namespace Additions
+
+Add the following terms to the IHE Namespace:
+
+None
+
+[#__RefHeading__81_897662812 .anchor]####Volume 4 – National Extensions
+
+Add appropriate Country section.
+
+== 4 National Extensions
+
+None at this time

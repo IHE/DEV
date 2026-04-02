@@ -1,0 +1,805 @@
+*Integrating the Healthcare Enterprise*
+
+image:extracted-media-memls/media/image1.jpeg[IHE_LOGO_for_tf-docs,width=171,height=88]
+
+*IHE Devices*
+
+*Technical Framework Supplement*
+
+*PCD Program*
+
+*Medical Equipment Management*
+
+*Location Services*
+
+*(MEMLS)*
+
+*Rev. 1.5 – Trial Implementation*
+
+Date: September 19, 2024
+
+Author: IHE Devices Technical Committee
+
+Email: pcd@ihe.net
+
+*Please verify you have the most recent version of this document.* See http://ihe.net/Technical_Frameworks/[here] for Trial Implementation and Final Text versions and http://ihe.net/Public_Comment/[here] for Public Comment versions.
+
+*Foreword*
+
+This is a supplement to the IHE Devices Technical Framework. Each supplement undergoes a process of public comment and trial implementation before being incorporated into the volumes of the Technical Frameworks.
+
+This supplement is published on September 19, 2024 for trial implementation and may be available for testing at subsequent IHE Connectathons. The supplement may be amended based on the results of testing. Following successful testing it will be incorporated into the Devices Technical Framework. Comments are invited and can be submitted at https://www.ihe.net/DEV_Public_Comments/[https://www.ihe.net/DEV_Public_Comments].
+
+This supplement describes changes to the existing technical framework documents.
+
+“Boxed” instructions like the sample below indicate to the Volume Editor how to integrate the relevant section(s) into the relevant Technical Framework volume.
+
+Amend Section X.X by the following:
+
+Where the amendment adds text, make the added text *[.underline]#bold underline#*. Where the amendment removes text, make the removed text *[line-through]#bold strikethrough#*. When entire new sections are added, introduce with editor’s instructions to “add new text” or similar, which for readability are not bolded or underlined.
+
+General information about IHE can be found at http://www.ihe.net/[IHE.net].
+
+Information about the IHE Devices domain can be found at https://www.ihe.net/ihe_domains/[IHE Domains].
+
+Information about the organization of IHE Technical Frameworks and Supplements and the process used to create them can be found at https://www.ihe.net/resources/profiles/[Profiles] and https://www.ihe.net/about_ihe/ihe_process/[IHE Processes].
+
+The current version of the IHE Devices Technical Framework can be found at https://profiles.ihe.net/DEV/[Devices Technical Framework].
+
+CONTENTS
+
+link:#introduction-to-this-supplement[Introduction to this Supplement link:#introduction-to-this-supplement[5]]
+
+link:#open-issues-and-questions[Open Issues and Questions link:#open-issues-and-questions[5]]
+
+link:#closed-issues[Closed Issues link:#closed-issues[6]]
+
+link:#history-of-document-changes[History of Document Changes link:#history-of-document-changes[6]]
+
+link:#ihe-technical-frameworks-general-introduction[IHE Technical Frameworks General Introduction link:#ihe-technical-frameworks-general-introduction[7]]
+
+link:#copyright-licenses[9 Copyright Licenses link:#copyright-licenses[7]]
+
+link:#trademark[10 Trademark link:#trademark[7]]
+
+link:#ihe-technical-frameworks-general-introduction-appendices[IHE Technical Frameworks General Introduction Appendices link:#ihe-technical-frameworks-general-introduction-appendices[8]]
+
+link:#_Toc177639746[Appendix A – Actors link:#_Toc177639746[8]]
+
+link:#_Toc177639747[Appendix B – Transactions link:#_Toc177639747[9]]
+
+link:#_Toc177639748[Appendix D – Glossary link:#_Toc177639748[9]]
+
+link:#_Toc177639749[*Volume 1 – Profiles link:#_Toc177639749[11]*]
+
+link:#copyright-licenses-1[Copyright Licenses link:#copyright-licenses-1[11]]
+
+link:#domain-specific-additions[Domain-specific additions link:#domain-specific-additions[11]]
+
+link:#x-medical-equipment-management-location-services-memls-profile[X Medical Equipment Management Location Services (MEMLS) Profile link:#x-medical-equipment-management-location-services-memls-profile[11]]
+
+link:#x.1-memls-actors-transactions-and-content-modules[X.1 MEMLS Actors&#44; Transactions&#44; and Content Modules link:#x.1-memls-actors-transactions-and-content-modules[11]]
+
+link:#x.1.1-actor-descriptions-and-actor-profile-requirements[X.1.1 Actor Descriptions and Actor Profile Requirements link:#x.1.1-actor-descriptions-and-actor-profile-requirements[12]]
+
+link:#x.1.1.1-location-observation-reporter-lor[X.1.1.1 Location Observation Reporter (LOR) link:#x.1.1.1-location-observation-reporter-lor[12]]
+
+link:#x.1.1.2-location-observation-consumer-loc[X.1.1.2 Location Observation Consumer (LOC) link:#x.1.1.2-location-observation-consumer-loc[13]]
+
+link:#x.2-memls-actor-options[X.2 MEMLS Actor Options link:#x.2-memls-actor-options[13]]
+
+link:#x.3-memls-required-actor-groupings[X.3 MEMLS Required Actor Groupings link:#x.3-memls-required-actor-groupings[13]]
+
+link:#x.4-memls-overview[X.4 MEMLS Overview link:#x.4-memls-overview[13]]
+
+link:#x.4.1-concepts[X.4.1 Concepts link:#x.4.1-concepts[13]]
+
+link:#x.4.2-use-cases[X.4.2 Use Cases link:#x.4.2-use-cases[14]]
+
+link:#x.4.2.1-use-case-1-communication-of-location-observations-in-conjunction-with-other-non-location-related-transactions[X.4.2.1 Use Case #1: Communication of location observations in conjunction with other non-location related transactions link:#x.4.2.1-use-case-1-communication-of-location-observations-in-conjunction-with-other-non-location-related-transactions[14]]
+
+link:#x.4.2.1.1-location-added-to-other-observations-use-case-description[X.4.2.1.1 Location Added to Other Observations Use Case Description link:#x.4.2.1.1-location-added-to-other-observations-use-case-description[14]]
+
+link:#x.4.2.1.2-location-added-to-other-observations-process-flow[X.4.2.1.2 Location Added to Other Observations Process Flow link:#x.4.2.1.2-location-added-to-other-observations-process-flow[14]]
+
+link:#x.4.2.2-use-case-2-communication-of-location-observations-in-conjunction-with-ls-specific-events[X.4.2.2 Use Case #2: Communication of location observations in conjunction with LS specific events link:#x.4.2.2-use-case-2-communication-of-location-observations-in-conjunction-with-ls-specific-events[15]]
+
+link:#x.4.2.2.1-location-event-observations-use-case-description[X.4.2.2.1 Location Event Observations Use Case Description link:#x.4.2.2.1-location-event-observations-use-case-description[15]]
+
+link:#x.4.2.2.2-location-event-observations-process-flow[X.4.2.2.2 Location Event Observations Process Flow link:#x.4.2.2.2-location-event-observations-process-flow[15]]
+
+link:#x.5-memls-security-considerations[X.5 MEMLS Security Considerations link:#x.5-memls-security-considerations[15]]
+
+link:#x.6-memls-cross-profile-considerations[X.6 MEMLS Cross Profile Considerations link:#x.6-memls-cross-profile-considerations[16]]
+
+link:#_Toc177639770[*Volume 2 – Transactions link:#_Toc177639770[17]*]
+
+link:#report-location-observation-rlo-pcd-16[3.16 Report Location Observation (RLO) [PCD-16] link:#report-location-observation-rlo-pcd-16[17]]
+
+link:#scope[3.16.1 Scope link:#scope[17]]
+
+link:#actor-roles[3.16.2 Actor Roles link:#actor-roles[17]]
+
+link:#_Toc177639774[3.16.3 Referenced Standards link:#_Toc177639774[18]]
+
+link:#messages[3.16.4 Messages link:#messages[19]]
+
+link:#report-location-observation-rlo-pcd-16-1[3.16.4.1 Report Location Observation (RLO) [PCD-16] link:#report-location-observation-rlo-pcd-16-1[19]]
+
+link:#ls-observation-types[3.16.4.1.1 LS Observation Types link:#ls-observation-types[20]]
+
+link:#hl7-conformance-statement[3.16.4.1.2 HL7 Conformance Statement link:#hl7-conformance-statement[20]]
+
+link:#report-location-observation-pcd-16-orur45oru_r45-static-definition[3.16.4.1.3 Report Location Observation [PCD-16] (ORU^R45^ORU_R45) Static Definition link:#report-location-observation-pcd-16-orur45oru_r45-static-definition[21]]
+
+link:#trigger-events[3.16.4.1.4 Trigger Events link:#trigger-events[22]]
+
+link:#message-semantics[3.16.4.1.5 Message Semantics link:#message-semantics[23]]
+
+link:#proposed-additions-to-ieee-11073-10101[3.16.4.1.5.1 Proposed additions to IEEE 11073-10101 link:#proposed-additions-to-ieee-11073-10101[24]]
+
+link:#expected-actions[3.16.4.1.6 Expected Actions link:#expected-actions[26]]
+
+link:#security-considerations[3.16.5 Security Considerations link:#security-considerations[26]]
+
+link:#volume-2-namespace-additions[Volume 2 Namespace Additions link:#volume-2-namespace-additions[26]]
+
+link:#_Toc177639786[Appendices to Volume 2 link:#_Toc177639786[27]]
+
+link:#appendix-a-transaction-examples[Appendix A – Transaction Examples link:#appendix-a-transaction-examples[27]]
+
+link:#a.1-report-location-observation-for-equipment[A.1 Report Location Observation for equipment link:#a.1-report-location-observation-for-equipment[27]]
+
+link:#a.2-report-location-observation-for-people[A.2 Report Location Observation for people link:#a.2-report-location-observation-for-people[28]]
+
+link:#_Toc177639790[*Volume 3 – Content Modules link:#_Toc177639790[30]*]
+
+link:#namespaces-and-vocabularies[5 Namespaces and Vocabularies link:#namespaces-and-vocabularies[30]]
+
+link:#content-modules[6 Content Modules link:#content-modules[30]]
+
+link:#_Toc177639793[Volume 3 Namespace Additions link:#_Toc177639793[30]]
+
+link:#_Toc177639794[*Volume 4 – National Extensions link:#_Toc177639794[31]*]
+
+link:#national-extensions[4 National Extensions link:#national-extensions[31]]
+
+== Introduction to this Supplement
+
+This supplement affects volumes 1 and 2 of the Devices Technical Framework. The supplement adds a new profile, new actors, new triggers, and a new transaction. This supplement defines a profile for the communication of equipment and people location information in the absence of patient observations, alerts, or event notifications.
+
+The IHE Working Group (WG) that created and maintains this profile (PCD MEMLS WG) is aware of IEEE WG P1847 Location-Based Services (LBS) for Healthcare. The results of ongoing interactions with this IEEE WG are expected to impact this profile from time to time. Additionally, some content from this profile should be assumed to be available for utilization in the deliverables of the IEEE WG.
+
+=== Open Issues and Questions
+
+Staff location tracking is about more than the technology which can accomplish it. This effort will focus predominately on equipment location, but will provide a means of communicating location information of people. Enumerating all that can be accomplished with that information and all of the issues around those accomplishments is outside the scope of this effort.
+
+Identification of some observation identifications (MDC & REFID) are not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature and so a submission will be required. After values are assigned they are likely to appear in the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once assigned official values implementations shall use the assigned values.
+
+A unique to this profile HL7 v2 message trigger has been granted by HL7 v2 Orders and Observations to replace current use of trigger value R01. This profile utilizes unsolicited observations and therefore MSH-9-1 Message Code shall remain ORU. The HL7 granted trigger value is R45, is queued to first appear in a v 2.9.x release of HL7 v2 and replaces R01 in the MSH-9 Message Type field in both MSH-9-2 Trigger and MSH-9-3 Message Structure components in examples and references within this document have been updated accordingly. This trigger change while impacting to existing products, test tools, and deployments will allow transactions of this profile to utilize a message structure unique to this profile which will permit discontinuance of use of the message structure associated with R01. This change will allow transactions of this profile to exclude the R01 structure required HL7 message segments associated with electronic patient healthcare information (ePHI) contained in the PID Patient Identification and PV1 Patient Visit segments. Observation producer and consumer actors associated with this profile do not make use of and do not administer ePHI. Removal of ePHI message content which is not required by this profile assures patient confidentiality and avoids transaction consuming actors from requiring a HIPAA (Health Insurance Portability and Accountability Act of 1996) Business Associate agreement.
+
+When copying OBX instances from consumed transactions of this profile to reporter transactions of other profiles, such as DEC, IPEC, ACM, etc., the dotted notation values in OBX-4 should bear scrutiny for hierarchical conflicts with OBX-4 values of OBX instances associated with the base reporter content into which the OBX instances of this profile are being copied.
+
+=== Closed Issues
+
+Communication of the same information that this profile communicates as observations in conjunction with the data, alert, and event use cases associated with existing PCD profiles can be accomplished using the observation documentation found in this profile as additional observations to existing transactions in association with existing actors without the requirement for vendor adoption of this new profile. The justification for this additional profile is the definition of a new actor type (LS) which is distinct from existing actors as well as the trigger condition which is unrelated to any device associated patient.
+
+Other methods for communication of location information exist in the operating environment (SNMP, vendor proprietary SOAP/XML, etc.) today, are expected to continue to exist, but are not expected to integrate with medical device data communication.
+
+=== History of Document Changes
+
+This section provides a brief summary of changes and additions to this document.
+
+[width="100%",cols="15%,14%,71%",options="header",]
+|===
+|Date |Document Revision |Change Summary
+|2024-SEP |1.5 a|
+Updated for approved CPs, housekeeping corrections
+
+[width="100%",cols="18%,19%,63%",options="header",]
+!===
+!CP # !CP Approval Date !CP Title
+!DEV-004 !2024-06-12 !MEM LS Trigger and Template
+!===
+
+|2023-04-07 |1.4 a|
+Updated for approved CPs, housekeeping corrections, and replacing MDCXs with allocated MDCs and REFIDs.
+
+The following CPs were integrated.
+
+[width="100%",cols="15%,22%,63%",options="header",]
+!===
+!CP # !CP Approval Date !CP Title
+!112 !2015-02-26 !Move equipment name from OBX-18 to OBX-5
+!120 !2015-03-06 !Clarification of Observation Result Status OBX-11 as F
+!160 !2022-01-07 !MEM LS Multiple Location Observations, PL Clarity
+!===
+
+|2017-11-09 |1.3 |Updated for approved CPs, housekeeping corrections, and explanation that MDCs and REFIDs need to be standardized and that they will appear first in RTMMS.
+|2015-10-14 |1.2 |Updated for approved CPs and housekeeping corrections.
+|===
+
+== IHE Technical Frameworks General Introduction
+
+The https://profiles.ihe.net/GeneralIntro[IHE Technical Frameworks General Introduction] is shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to this document where appropriate.
+
+== Copyright Licenses
+
+IHE technical documents refer to, and make use of, a number of standards developed and published by several standards development organizations. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-9.html[Section 9 - Copyright Licenses] for copyright license information for frequently referenced base standards. Information pertaining to the use of IHE International copyrighted materials is also available there.
+
+== Trademark
+
+IHE^®^ and the IHE logo are trademarks of the Healthcare Information Management Systems Society in the United States and trademarks of IHE Europe in the European Community. Please refer to the IHE Technical Frameworks General Introduction, https://profiles.ihe.net/GeneralIntro/ch-10.html[Section 10 - Trademark] for information on their use.
+
+== IHE Technical Frameworks General Introduction Appendices
+
+The https://profiles.ihe.net/GeneralIntro/index.html[IHE Technical Framework General Introduction Appendices] are components shared by all of the IHE domain technical frameworks. Each technical framework volume contains links to these documents where appropriate.
+
+Update the following appendices to the General Introduction as indicated below. Note that these are *not* appendices to this domain’s Technical Framework (TF-1, TF-2, TF-3 or TF-4) but rather, they are appendices to the IHE Technical Frameworks General Introduction located https://profiles.ihe.net/GeneralIntro/index.html[here].
+
+*NEW: REQUIRED APPROVAL OF ACTORS, TRANSACTIONS and TERMS -* To avoid duplication and ensure consistency across domains, all *new or modified* actors, transactions and glossary terms need approval by IHE’s Domain Coordination Committee (DCC) before they are published in a trial implementation supplement. Please see https://wiki.ihe.net/index.php/Approval_Process_for_IHE_Actors,_Transactions_and_Glossary_Terms[this Wiki page] for additional guidance and links to the forms for approval submission.
+
+== https://profiles.ihe.net/GeneralIntro/ch-A.html[[#_Toc177639746 .anchor]####Appendix A] – Actors
+
+Add the following *new or modified* actors to the https://profiles.ihe.net/GeneralIntro/ch-A.html[IHE Technical Frameworks General Introduction Appendix A]:
+
+The Location Observation Reporter (LOR) produces observations.
+
+The Location Observation Consumer (LOC) consumes observations.
+
+[width="100%",cols="40%,60%",]
+|===
+|Actor |Definition
+|Location Observation Reporter (LOR) |The profile actor that sends Location Services observations of location for devices or people and data from Location Services tags
+|Location Observation Consumer (LOC) |The profile actor that receives Location Services observations
+|===
+
+The Location Observation Reporter (LOR) is a new and distinct observation source actor and is likely to be a Location Services system (LS) also recognized by the underlying technology used for equipment and people tracking, such as Radio Frequency Identification (RFID) or Real Time Location Services (RTLS). But it may also be an actor in a different profile (DEC DOR, ACM AR, IPEC DOR), assuming the location tracking and reporting capability is embedded into the medical device or the location observation is merged with the medical device data in a gateway system prior to it being sent to the observation consumer. The Location Observation Consumer (LOC) may also be an actor in a different profile (DEC DOC, ACM AM, IPEC DOC).
+
+== https://profiles.ihe.net/GeneralIntro/ch-B.html[[#_Toc177639747 .anchor]####Appendix B] – Transactions
+
+Add the following *new or modified* transactions to the https://profiles.ihe.net/GeneralIntro/ch-B.html[IHE Technical Frameworks General Introduction Appendix B]:
+
+Report Location Observation (RLO) (from LOR to LOC)
+
+[width="100%",cols="37%,63%",options="header",]
+|===
+|New (or modified) Transaction Name and Number |Definition
+|Report Location Observation [PCD-16] |If the location observation information is sourced from an external to device tag and reporting system, then the device to which it is attached has the potential of being unaware of its presence and would likely not contain device associated patient information. Then, the observation will be sourced by the LS and not the medical device. This transactions contains an observation of the location of a device or person or information about the Location Services tag, such as environmental (temperature, humidity, gases, etc.) or operator interactions (buttons, pulls, accelerometers, etc.).
+|===
+
+== https://profiles.ihe.net/GeneralIntro/ch-D.html[Appendix D] – Glossary
+
+Add the following *new or modified* glossary terms to the https://profiles.ihe.net/GeneralIntro/ch-D.html[IHE Technical Frameworks General Introduction Appendix D]:
+
+[width="100%",cols="28%,42%,14%,16%",options="header",]
+|===
+|New (or modified) Glossary Term |Definition |Synonyms a|
+Acronym/
+
+Abbreviation
+
+|Computerized Maintenance Management System |This is the system which the hospital makes use of to maintain its inventory of medical devices, their identification, their status, their software, firmware, and hardware versioning information and history. This is a system for which reception of device location observation is well suited as a means of identifying the last known location of equipment in need of servicing, repairs, or version upgrades. | |CMMS
+|Global Positioning System |This is the system of orbiting satellites that are constantly broadcasting extremely high accuracy time information, combined with ubiquitous receivers and software associated with the receivers that upon correlation of the received data can identify with reasonably high accuracy the location of the receiver in 3D space by latitude, longitude, and altitude. | |GPS
+|Health Insurance Portability and Accountability Act of 1996 |The Health Insurance Portability and Accountability Act of 1996 (HIPAA) is a federal law that required the creation of national standards to protect sensitive patient health information from being disclosed without the patient’s consent or knowledge. The US Department of Health and Human Services (HHS) issued the HIPAA Privacy Rule to implement the requirements of HIPAA. The HIPAA Security Rule protects a subset of information covered by the Privacy Rule. See https://www.cdc.gov/phlp/publications/topic/hipaa.html. | |HIPAA
+|Location Services |This is a collection of software applications and services which utilize tag tracking information to provide the last known location of the tags as well as any environmental or operator interactions with the tags. | |LS
+|National Marine Electronics Association |This is a worldwide, self-sustaining organization with the commitment to enhance the technology and safety of electronics used in marine applications. | |NMEA
+|Radio Frequency Identification |This is the technology whereby tags will transmit their unique identification either periodically (active) or when energized by an energy field (passive). This identification transmission can be correlated by multiple receives to identify the location of the tag. | |RFID
+|Real Time Location Services |This is an aspect of Location Services whereby the last known location of devices or people can be communicated to other systems. | |RTLS
+|===
+
+[#_Toc177639749 .anchor]####Volume 1 – Profiles
+
+=== Copyright Licenses
+
+Add the following to the IHE Technical Frameworks General Introduction Copyright section:
+
+NA
+
+=== Domain-specific additions
+
+None
+
+Add Section X
+
+== X Medical Equipment Management Location Services (MEMLS) Profile
+
+Existing profile transaction observation information does not include detailed device and people location identification which can be sourced by embedded location sensing components or through location sensing tags external to equipment and these tags can also provide additional information such as button presses and environmental information such as temperature and humidity. Additionally, there are no defined actors or transactions for providing location information from other than medical devices to other than an EMR or an alert manager.
+
+Specific triggers, transactions, and source actors in existing profiles do not exist for the sole purpose of communication of location information in the absence of patient observations, alerts, or event notifications. The absence of the communication of this information outside of patient observations, alerts, or event notifications reduces the effectiveness of Location Services (LS) solutions and impacts the effectiveness of people interactions with equipment and systems by not providing for location information or location specific events.
+
+This profile is a combination of profile types as it defines workflow through use case specification and transport through its described use of the HL7 v2 and IEEE 11073 standards for information communication.
+
+=== X.1 MEMLS Actors, Transactions, and Content Modules
+
+This section defines the actors, transactions, and/or content modules in this profile. General definitions of actors are given in the Technical Frameworks General Introduction Appendix A. IHE Transactions can be found in the Technical Frameworks General Introduction Appendix B. Both appendices are located at https://profiles.ihe.net/GeneralIntro/index.html.
+
+Figure X.1-1 shows the actors directly involved in the MEMLS Profile and the relevant transactions between them. If needed for context, other actors that may be indirectly involved due to their participation in other related profiles are shown in dotted lines. Actors which have a mandatory grouping are shown in conjoined boxes.
+
+Figure X.1-1: MEMLS Actor Diagram
+
+Table X.1-1 lists the transactions for each actor directly involved in the MEMLS Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
+
+Table X.1-1: MEMLS Profile - Actors and Transactions
+
+[width="100%",cols="19%,23%,22%,36%",options="header",]
+|===
+|Actors |Transactions |Optionality |Reference
+|LOR |RLO [PCD-16] |R |DEV TF-2: 3.16
+|LOC |RLO [PCD-16] |R |DEV TF-2: 3.16
+|===
+
+==== X.1.1 Actor Descriptions and Actor Profile Requirements
+
+Most requirements are documented in Transactions (Volume 2) and Content Modules (Volume 3). This section documents any additional requirements on profile’s actors.
+
+===== X.1.1.1 Location Observation Reporter (LOR)
+
+The Location Observation Reporter (LOR) may also be an observation transaction sending actor in other IHE Devices profiles, such as a DEC DOR, an ACM AR, an IPEC DOR, or a MEMDMC DMIR. This could be the case if the location tracking tag is either embedded in the sending actor or if the tag is external and a gateway system is being used to merge the location information with observations associated with other IHE profiles. If the tag is external the medical device may have no awareness of its presence or if the observations are unique to location services and are not associated with patients. The location services specific nature of the observations produced by the Location Observation Reporter is the justification for this unique profile.
+
+===== X.1.1.2 Location Observation Consumer (LOC)
+
+It is highly likely that the Location Observation Consumer may also be an observation transaction receiving actor in other IHE Devices profiles. If the observation is simply to be recorded it is likely to be a DEC DOC or IPEC DOC Actor. If the observation is to be acted upon, it is likely to be an ACM AM Actor. If the location observation is to be used for equipment management, the LOC Actor is likely to be a MEMDMC DMIC Actor (a CMMS).
+
+=== X.2 MEMLS Actor Options
+
+Options that may be selected for each actor in this profile, if any, are listed in the Table X.2-1. Dependencies between options when applicable are specified in notes.
+
+Table X.2-1: MEMLS - Actors and Options
+
+[width="100%",cols="20%,36%,44%",options="header",]
+|===
+|Actor |Option Name |Reference
+|LOR |No options defined |--
+|LOC |No options defined |--
+|===
+
+=== X.3 MEMLS Required Actor Groupings 
+
+There are no required actor groupings.
+
+=== X.4 MEMLS Overview
+
+MEM LS is focused on getting location tracking or tag related observations into medical records and into equipment management systems.
+
+==== X.4.1 Concepts
+
+Location information is pertinent to medical device observations as it provides a means of locating the patient currently associated with that equipment. This can be additional observation information added to existing transactions without the use of this profile. This profile focuses on those uses of location tracking information or tag associated information independent of any patient currently associated with the equipment, such as for equipment management, and tag auxiliary information such as button presses or environmental observations like temperature and humidity.
+
+If the end result of receipt of such information is the generation of Report Alert [PCD-04] transactions in association with the ACM Profile then the sending system is considered to be an AR with additional types of alerts and observations.
+
+==== X.4.2 Use Cases
+
+===== X.4.2.1 Use Case #1: Communication of location observations in conjunction with other non-location related transactions
+
+This is the addition of location observations in the same transaction with non-location related transactions, such as DEC [PCD-01], ACM [PCD-04], IPEC [PCD-10], and MEMDMC [PCD-15].
+
+====== X.4.2.1.1 Location Added to Other Observations Use Case Description
+
+This presumes that the reporting piece of equipment or system is location aware and so has the location information to include in with its other observations. This can be accomplished either by embedding the location tracking capability into the equipment or by using a gateway external to the device and to the location tracking system to merge the information into a single device observation plus location observation message.
+
+====== X.4.2.1.2 Location Added to Other Observations Process Flow
+
+A producer (DEC DOR or IPEC DOR or ACM AR or MEMDMC DMIR) is producing an observation (evidentiary data, alert, or event) and is location aware and includes location as an observation in with the rest of the observations. The device or system is made location aware either through an embedded location tag or by querying an external system that is aware of the location of a tag physically external to the device or system producing the observation. Such transactions are outside the scope of this profile and are addressed by the existing DEC, ACM, IPEC, and MEMDMC Profiles.
+
+Figure X.4.2.1.2-1: Basic Process Flow in MEMLS Profile
+
+Main Flow:
+
+An observation, alert, or event has occurred and a device or system will be producing a profile related transaction [(PCD-01], [PCD-04], [PCD-10], or [PCD-15]). The device or system is location aware and will include location as an additional observation in the transaction.
+
+===== X.4.2.2 Use Case #2: Communication of location observations in conjunction with LS specific events
+
+This is the addition of location observations in the same transactions with location related transactions, such as DEC [PCD-01] and ACM [PCD-04]. These are LS specific and not patient specific.
+
+====== X.4.2.2.1 Location Event Observations Use Case Description
+
+This presumes that the reporting piece of equipment or system is location aware and so has the location information to include in with its other observations.
+
+====== X.4.2.2.2 Location Event Observations Process Flow
+
+A producer (DEC DOR or ACM AR or IPEC DOR or MEMDMC DMIR) is producing an LS specific observation (evidentiary data, alert, or event) and is location aware and includes location as an observation in with the rest of the observations. The device or system is made location aware either through an embedded location tag or by querying an external system that is aware of the location of a tag physically external to the device or system producing the observation.
+
+For backward compatibility with existing applications that only look for and process a single device single location observation per MEM LS Report Location Observation (RLO) [PCD-16] transaction, if multiple location observations for the same device are communicated in a single Report Location Observation (RLO) [PCD-16] transaction the first observation shall be the most fully resolved, meaning having the most non-empty components of the Person Location (PL) datatype, with lesser resolved location observations following it in order of decreasing completeness of resolution. See the note within the PL datatype definition in HL7 version 2.6 chapter 2A Control (DataTypes) page 53 which spells out PL component ordering.
+
+Figure X.4.2.2.2-1: Basic Process Flow in MEMLS Profile
+
+=== X.5 MEMLS Security Considerations
+
+During the Profile development there were no unusual security or privacy concerns identified. There are no mandatory security controls but the implementer is encouraged to use the underlying security and privacy profiles from ITI that are appropriate to the transports such as the Audit Trail and Node Authentication (ATNA) Profile. The operational environment risk assessment, following ISO 80001, will determine the actual security and safety controls employed.
+
+=== X.6 MEMLS Cross Profile Considerations
+
+An LOR is likely to also be a DEC DOR, an IPEC DOR, an ACM AR, or MEMDMC DIOR. There is no grouping required.
+
+An LOC is likely to also be a DEC DOC, an IPEC DOC, an ACM AM, or MEMDMC DIOC. There is no grouping required.
+
+[#_Toc177639770 .anchor]####Volume 2 – Transactions
+
+Add Section 3.16
+
+=== 3.16 Report Location Observation (RLO) [PCD-16]
+
+==== 3.16.1 Scope
+
+This transaction is used to report location observations for equipment or people.
+
+==== 3.16.2 Actor Roles
+
+The LOR sends the RLO to the LOC.
+
+Figure 3.16.2-1: Use Case Diagram
+
+The roles in this transaction are defined in the following table and may be played by the actors shown here:
+
+Table 3.16.2-1: Actor Roles
+
+[width="100%",cols="19%,81%",]
+|===
+|*Role:* |Producer
+|*Actor(s):* a|
+The following actors may play the role of Producer:
+
+____
+Location Observation Reporter (LOR)
+____
+
+|*Role:* |Consumer
+|*Actor(s):* a|
+The following actors may play the role of Consumer:
+
+____
+Location Observation Consumer (LOC)
+____
+
+|===
+
+==== 3.16.3 Referenced Standards
+
+HL7 v2.6, Chapter 7 Observations and v2.7, Chapter 7 Observations for the PRT segment, transitioning to v2.9.x once published for new trigger/template.
+
+IEEE 11073-10101, minimally version B, with additional MDC/REFID values not yet in the standard (as identified by MDCX indicated value of zero and the interim REFID values).
+
+Identification of some observation identifications (MDC & REFID) might not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature in which case a submission will be required. These are maintained external to this profile and thus have a low probability of new change proposals to this profile. After values are assigned, they appear in the current version of Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once assigned, official values implementations shall use the assigned values.
+
+Below is a mapping table with an indication as to whether or not the REFID string changed from the trial to the allocated values. To reduce transcription errors, table content has been kept to a minimum. For additional details, such as value descriptions, units of measure, partition codes, and enumerations, refer to the IEEE 11073-10101 standard (normative and balloted versions) or RTMMS.
+
+Table 3.16.3-1: IEEE Nomenclature Mapping from preliminary to assigned
+
+[width="100%",cols="45%,43%,12%",options="header",]
+|===
+|Trial Values |Allocated Values |Changed
+|0^MDCX_EVT_LS_DEVICE |203776^MDC_EVT_LS_DEVICE^MDC |N
+|0^MDCX_EVT_LS_PERSON |203778^MDC_EVT_LS_PERSON^MDC |N
+|0^MDCX_LS_ATTR_NAME^MDC |68512^MDC_ATTR_LS_NAME^MDC |Y
+|0^MDCX_LS_ATTR_LOCATION^MDC |68513^MDC_ ATTR_LS_LOCATION^MDC |Y
+|0^MDCX_LS_ATTR_ADDRESS^MDC |68514^MDC_ATTR_LS_ADDRESS^MDC |Y
+|none |68515^MDC_ATTR_LS_PHASE^MDC |N
+|0^MDCX_LS_ATTR_REF_NAME^MDC |68517^MDC_ATTR_LS_REF_NAME^MDC |Y
+|none |68518^MDC_ATTR_LS_REF_GPS^MDC |N
+|none |68519^MDC_ATTR_LS_REF_GPS_LAT^MDC |N
+|none |68520^MDC_ATTR_LS_REF_GPS_LON^MDC |N
+|none |68521^MDC_ATTR_LS_REF_GPS_ALT^MDC |N
+|none |68522^MDC_ATTR_LS_REF_GPS_BEARING^MDC |N
+|none |68523^MDC_ATTR_LS_REF LIMITS^MDC |N
+|none |68524^MDC_ATTR_LS_COORD_XYZ^MDC |N
+|0^MDCX_LS_ATTR_COORD_X^MDC |68525^MDC_ATTR_LS_COORD_X^MDC |Y
+|0^MDCX_LS_ATTR_COORD_Y^MDC |68526^MDC_ATTR_LS_COORD_Y^MDC |Y
+|0^MDCX_LS_ATTR_COORD_Z^MDC |68527^MDC_ATTR_LS_COORD_Z^MDC |Y
+|none |68528^MDC_ATTR_LS_COORD_XYZ_ACCY^MDC |N
+|0^MDCX_LS_ATTR_COORD_X_ACCURACY^MDC |68529^MDC_ATTR_LS_COORD_X_ACCY^MDC |Y
+|0^MDCX_LS_ATTR_COORD_Y_ACCURACY^MDC |68530^MDC_ATTR_LS_COORD_Y_ACCY^MDC |Y
+|0^MDCX_LS_ATTR_COORD_Z_ACCURACY^MDC |68531^MDC_ATTR_LS_COORD_Z_ACCY^MDC |Y
+|none |68532^MDC_ATTR_GPS_COORDINATES |N
+|0^MDCX_GPS_ATTR_LATITUDE^MDC |68533^MDC_ATTR_GPS_LAT^MDC |Y
+|0^MDCX_GPS_ATTR_LONGITUDE^MDC |68534^MDC_ATTR_GPS_LON^MDC |Y
+|0^MDCX_GPS_ATTR_ACCURACY |68535^MDC_ATTR_GPS_COORD_ACCY^MDC |N
+|none |68536^MDC_ATTR_GPS_LAT_ACCY^MDC |N
+|none |68537^MDC_ATTR_GPS_LON_ACCY^MDC |N
+|0^MDCX_GPS_ATTR_ALTITUDE^MDC |68538^MDC_ATTR_GPS_ALT^MDC |Y
+|none |68539^MDC_ATTR_GPS_ALT_ACCY^MDC |N
+|0^MDCX_GPS_ATTR_HEADING^MDC |68540^MDC_ATTR_GPS_HEADING^MDC |Y
+|0^MDCX_GPS_ATTR_PITCH^MDC |68541^MDC_ATTR_GPS_PITCH^MDC |Y
+|0^MDCX_GPS_ATTR_SPEED^MDC |68542^MDC_ATTR_GPS_SPEED^MDC |Y
+|none |69135^MDC_OBS_MEM^MDC |N
+|===
+
+==== 3.16.4 Messages
+
+Figure 3.16.4-1: Interaction Diagram
+
+===== 3.16.4.1 Report Location Observation (RLO) [PCD-16]
+
+The observations are mapped to OBX (equipment) and PRT (people or equipment) segments and contained under the OBX segment which identifies the observation type (person or equipment).
+
+A single transaction should report about one piece of equipment or one person.
+
+More than one sending actor instance can send to the same receiving actor instance.
+
+For backward compatibility with existing applications that only look for and process a single device single location observation per MEM LS Report Location Observation (RLO) [PCD-16] transaction, if multiple location observations for the same device are communicated in a single Report Location Observation (RLO) [PCD-16] transaction the first observation shall be the most fully resolved.
+
+====== 3.16.4.1.1 LS Observation Types
+
+Location observations can be reported in one or more types.
+
+* Named Location (hospital named hierarchical location or simple name string)
+* Base + (X/Y/Z) offset plus accuracy indications
+* GNSS/GPS plus accuracy indications
+
+Named locations are preferred for communication of a location to a person. Base + offset is used to communicate location to another LS system for moving pushpins on active maps or floor layouts. GNSS/GPS is good for absolute location retrospective analysis or for locations outside structures.
+
+The Base reference for base + offset location observations is typically a mutually agreed base map, such as an electronic architectural diagram file for an area within a building, such as a care unit on a floor within a hospital building.
+
+For backward compatibility with existing applications that only look for and process a single device single location observation per MEM LS Report Location Observation (RLO) [PCD-16] transaction, if multiple location observations for the same device are communicated in a single Report Location Observation (RLO) [PCD-16] transaction the first observation shall be the most fully resolved, meaning having the most non-empty components of the Person Location (PL) datatype, with lesser resolved location observations following it in order of decreasing completeness of resolution. See the note within the PL datatype definition in HL7 version 2.6 chapter 2A Control (DataTypes) page 53 which spells out PL component ordering.
+
+====== 3.16.4.1.2 HL7 Conformance Statement
+
+The conformance statement for this interaction described below is adapted from HL7 version 2.6 with use of the Participation Information (PRT) segment from HL7 version 2.7.
+
+Table 3.16.4.1.2-1: Report Location Observation [PCD-16] Transaction Conformance
+
+[width="100%",cols="35%,65%",options="header",]
+|===
+|Publication ID: |R45
+|Type: |Unsolicited
+|Publication Name: |IHEPCD-16ReportLocationObservation
+|Trigger: |See Section 3.16.4.1.4 Trigger Events
+|Mode: |Immediate
+|Response: |ORU^R45^ORU_R45
+|Characteristics: |Sends defined location observation data
+|Purpose: |Report Location Observation from LOR to LOC
+|Based on Segment Pattern: |R45
+|===
+
+====== 3.16.4.1.3 Report Location Observation [PCD-16] (ORU^R45^ORU_R45) Static Definition
+
+The Report Location Observation [PCD-16] message is used to communicate location observation data from a Location Observation Reporter (LOR) to a Location Observation Consumer (LOC).
+
+Common HL7 segments are defined in DEV TF-2: Appendix B. Sections below discuss considerations specific to [PCD-16].
+
+Figure 3.16.4.1.3-1: Basic Process Flow for MEMLS Profile (reference)
+
+Table 3.16.4.1.3-1: ORU^R45^ORU_R45 HL7 Attribute Table
+
+[width="100%",cols="13%,39%,16%,15%,17%",options="header",]
+|===
+|Segment |ORU Message |Usage |Card. |HL7 Ref
+|MSH |Message Header Segment |R |[1..1] |2.15.9
+|OBR |Observation Request Segment |R |[1..n] |7.4.1
+|OBX |Observation Result Segment |R |[1..n] |7.4.2
+|[PRT] |Participation Information Segment |O |[0..n] Note 1 |7.4.4 (V2.7)
+|===
+
+Note 1: Use of PRT is required for communicating the location of people. If operating in a backward compatible manner for equipment location observations this can be accomplished using OBX-18 Equipment Instance Identifier instead of the PRT segment.
+
+Table 3.16.4.1.3-2: ORU^R45^ORU_R45 Static Definition
+
+[width="100%",cols="47%,53%",options="header",]
+|===
+|ORU^R45^ORU_R45 |Device Management Information Observation Message
+|MSH |Message Header
+|[\{SFT}] |Software Segment
+|\{ |--- REPORT LOCATION OBSERVATION begin
+|\{ |--- LOCATION_OBSERVATION begin
+|OBR |Location Observation Identification
+|\{ |--- OBSERVATION begin
+|\{OBX} |Location observations relative to OBR
+|[PRT] |Participation identifies person or equipment
+|} |--- OBSERVATION end
+|} |--- LOCATION_OBSERVATION end
+|} |--- REPORT LOCATION OBSERVATION end
+|===
+
+====== 3.16.4.1.4 Trigger Events
+
+The HL7 trigger event is ORU^R45^ORU_R45.
+
+Any nomenclature used by the MEMLS Profile not yet in the IEEE 11073-10101 standard will be submitted for inclusion in the first available update to the standard. In the interim, MDC will be identified as MDCX, codes values will be zero, and interim REFID strings will be utilized. Once the standard has been updated to include the identifications, MEMLS actor implementations shall utilize the standardized MDC/REFID values.
+
+More sophisticated location services events can be derived from the above defined events using the observation attributes associated with the event message. For example a Mother-Baby mismatch, equipment collocation implying a patient to equipment binding, or arrival of a clinician to a room location which results in a change to a nurse call dome light. It is not within the scope of this profile to define the algorithms by which such sophisticated events are determined to have occurred or the actions which would result from such an occurrence.
+
+Typical application purposes for deployment of LS solutions are achievable using the above set of triggers. Additional triggers typically aren’t required. The triggering event is the underlying event that is the foundation for the application purposes. The table below offers some suggestions.
+
+Table 3.16.4.1.4-1: Application Purposes Mapped to Available Triggers
+
+[width="100%",cols="9%,51%,40%",options="header",]
+|===
+|# |Application Purpose |Based Upon Available Triggers
+|1 |Mother-Baby mismatch detection |Colocation
+|2 |Infant abduction |Boundary or Colocation
+|3 |Patient – equipment binding |Colocation
+|4 |Clinician entering room or being near patient affecting equipment |Boundary or Colocation
+|5 |Privacy/security, authentications and violations |Colocation or Boundary
+|6 |Positive Patient Identification/Device Association |Colocation
+|7 |Specimen tracking |Location observation, Movement, Boundary
+|8 |Staff tracking (other than clinical) |Location Observation
+|9 |Staff needing assistance |Dwell, Interaction, Tamper
+|10 |Refrigerator/freezer monitoring |Environment
+|11 |Violation of controlled environment |Environment
+|12 |Infection prevention and control |Colocation (of staff to wash station)
+|13 |Human resources log in/out for payroll |Colocation, Boundary
+|14 |Communication device asset management |Location observation, Boundary
+|15 |Delivery arrivals (pharmacy, supplies) |Location observation, Boundary
+|16 |Closed Loop Medication Administration |Location observation, Colocation
+|17 |Code/Nurse Calls |Location observation, Colocation
+|18 |Food services workflow |Location observation, Boundary, Colocation
+|19 |Automated/guided vehicle arrival/departure |Colocation
+|20 |Supplies tracking |Location observation, Colocation
+|21 |Transfer center workflow |Location observation, Colocation, Boundary
+|===
+
+====== 3.16.4.1.5 Message Semantics
+
+The message is an HL7 observation. The content of the message is governed by HL7, IHE DEV Technical Framework and this profile. The objects for which the observations are being reported are governed by IHEE 11073.
+
+The MDS, VMD, CHAN, and METRICs are to be reported per the IHE PCD Technical Framework.
+
+The HL7 version 2.7 Participation Information (PRT) segment is required as a child of the location type identifying OBX segment to identify the person in person associated location observations. For backwards compatibility if the location observation is equipment associated then the PRT segment need not be used and OBX segment field Equipment Instance Identifier OBX-18 can be used to identify the unique instance of the equipment. As of HL7 version 2.7 use of Equipment Instance Identifier OBX-18 is retained for backward compatibility and equipment identification has been moved to the PRT segment. Therefore use of the PRT segment for equipment location observations is considered forward looking. This applies to both MEMLS use cases (LS observations in other profiles, such as DEC, ACM, and IPEC and LS observations in the MEMLS Profile).
+
+Indicating Observation Result Status (OBX-11) as a value of R (Results entered – not verified) establishes an expectation that someone will manually verify the value of the observation. Review and verification of MEMLS Profile specific observations is not expected as they change over time and requiring someone to review and certify them is a workload with little return for the effort. Therefore MEMLS observations shall indicate a value of F (Final) in Observation Result Status (OBX-11).
+
+======= 3.16.4.1.5.1 Proposed additions to IEEE 11073-10101
+
+Nomenclature items used in the MEMLS Profile which are not yet in the IEEE 11073-10101 standard will be submitted for inclusion in the first available update to the standard. In the interim MDC will be identified as MDCX, codes values will be zero, and interim REFID strings will be utilized. Identification of some observation identifications (MDC & REFID) are not be currently defined in Rosetta Terminology Mapping (RTM) or in IEEE 11073-10101 Nomenclature and so a submission will be required. After values are assigned they are likely to appear in the Rosetta Terminology Mapping Management System (RTMMS) prior to being balloted for an update to the standard. Once the standard has been updated to include the identifications MEMLS actor implementations shall utilize the standardized MDC/REFID values.
+
+Communication of the location of a person or piece of equipment by structured location as in, building, floor, point of care, room, bed, etc. is communicated using a separate instance of an OBX segment with OBX-3 Observation Identifier containing 68513^MDC_ATTR_LS_LOCATION^MDC and OBX-5 Observation Value containing the observed location in the format defined by the HL7 Person Location (PL) Data Type (see HL7 version 2.6 Chapter 2A Section 2.A.53 PL - Person Location) and indicating PL in OBX-2 Value Type.
+
+For backward compatibility with existing applications that only look for and process a single device single location observation per MEM LS Report Location Observation (RLO) [PCD-16] transaction, if multiple location observations for the same device are communicated in a single Report Location Observation (RLO) [PCD-16] transaction the first observation shall be the most fully resolved, meaning having the most non-empty components of the Person Location (PL) datatype, with lesser resolved location observations following it in order of decreasing completeness of resolution. See the note within the PL datatype definition in HL7 version 2.6 chapter 2A Control (DataTypes) page 53 which spells out PL component ordering.
+
+The Point of Care component of the Person Location (PL) datatype is meant to refer to the architecturally or business unit defined within the floor of a building, as in Recovery, Emergency, Radiology, etc. It is not meant to refer to a site on the body of a patient where care is administered. For patient body site indications, see HL7 2.6 Chapter 7 Observation Reporting section 7.4.2 Observation/Result Segment (OBX) Observation Site field (OBX-20).
+
+To indicate building structural compass ordinal wings in a location observation when using the Person Location (PL) datatype a common practice is to suffix the Point of Care (sequence 1) component with the compass ordinal indication, either abbreviated to reduce the length of the name string, i.e., ICU-W for ICU West or the full ordinal name. Continued use of site currently deployed structural identification strings, as used by the patient Admit/Discharge/Transfer (ADT) system, are likely to take precedence over changes to the strings. See the IHE Information Technology (ITI) domain profiles.
+
+Common areas, such as waiting rooms or hallways, are also likely to need encoding into the Person Location (PL) datatype. A common practice is to establish a reusable point of care unique Room component string value, such as Waiting, as used in ER^Waiting or OR^Waiting or ICU-W^Hall.
+
+Shared areas between two defined Room values, as in a bathroom shared by multiple rooms, are typically arbitrarily indicated by the healthcare institution as being associated with one of the Room name strings so as to more concisely direct a responding individual to the shared area.
+
+As it is defined in the HL7 standard an uncoded string the Location Description component (seq 9) of the Person Location (PL) datatype shall be avoided for communicating a hierarchical named location. It shall be reserved for optional additional information for improved human recognition, as in OR^Waiting^^^^^^^blue walls.
+
+HL7 Component Table – PL – Person Location
+
+[width="100%",cols="13%,9%,10%,10%,11%,32%,15%",options="header",]
+|===
+|SEQ |LEN |DT |OPT |TBL# |COMPONENT NAME |SEC. REF.
+|1 |20 |IS |O |0302 |Point of Care |2.A.36
+|2 |20 |IS |O |0303 |Room |2.A.36
+|3 |20 |IS |O |0304 |Bed |2.A.36
+|4 |227 |HD |O | |Facility |2.A.33
+|5 |20 |IS |O |0306 |Location Status |2.A.36
+|6 |20 |IS |C |0305 |Person Location Type |2.A.36
+|7 |20 |IS |O |0307 |Building |2.A.36
+|8 |20 |IS |O |0308 |Floor |2.A.36
+|9 |199 |ST |O | |Location Description |2.A.74
+|10 |427 |EI |O | |Comprehensive Location Identifier |2.A.25
+|11 |227 |HD |O | |Assigning Authority for Location |2.A.33
+|===
+
+For definitive works always refer back to the originating version of the standard to make sure you’re using up to date information.
+
+Communication of equipment name shall be in a separate OBX segment occurrence with an observation containment identifying MDC/REFID in OBX-3 68512^MDC_ATTR_LS_NAME^MDC shall be used with the equipment name as the observation value in OBX-5 Observation Value.
+
+====== 3.16.4.1.6 Expected Actions
+
+In response to the receipt of the message the receiver will generate an HL7 acknowledgement to advise the sending of the status of the receipt of the message that was sent.
+
+As a result of receiving the observation the receiver can store the information for later retrieval or the information can be used to trigger the production of transactions in other IHE profiles, such the generation of an ACM alert.
+
+For backward compatibility with existing applications that only look for and process a single device single location observation per MEM LS Report Location Observation (RLO) [PCD-16] transaction, if multiple location observations for the same device are communicated in a single Report Location Observation (RLO) [PCD-16] transaction the first observation shall be the most fully resolved, meaning having the most non-empty components of the Person Location (PL) datatype, with lesser resolved location observations following it in order of decreasing completeness of resolution. See the note within the PL datatype definition in HL7 version 2.6 chapter 2A Control (DataTypes) page 53 which spells out PL component ordering.
+
+==== 3.16.5 Security Considerations
+
+During the Profile development there were no unusual security or privacy concerns identified. There are no mandatory security controls but the implementer is encouraged to use the underlying security and privacy profiles from ITI that are appropriate to the transports such as the Audit Trail and Node Authentication (ATNA) Profile. The operational environment risk assessment, following ISO 80001, will determine the actual security and safety controls employed.
+
+== Volume 2 Namespace Additions
+
+Add the following terms to the IHE General Introduction Appendix G:
+
+The following OIDs have been allocated to the MEMLS Profile.
+
+Specific IHE-PCD Transactions: 1.3.6.1.4.1.19376.1.6.16.9 / 1.3.6.1.4.1.19376.1.6.1.16.1 [PCD-16].
+
+The 1.3.6.1.4.1.19376.1.6.1.16.1 will appear in MSH-21 to identify the [PCD-16] transaction.
+
+Specific IHE-PCD Conformance Profiles: 1.3.6.1.4.1.19376.1.6.6.16.1 [PCD-16]
+
+[#_Toc177639786 .anchor]####Appendices to Volume 2
+
+== Appendix A – Transaction Examples
+
+These are the transaction examples for this profile.
+
+=== A.1 Report Location Observation for equipment
+
+The Report Location Observation (RLO) for equipment is the report of an observation of the location of a piece of equipment and the reason for the report.
+
+MSH|^~\&|Argus RFID System^00095F56787^EUI-64|Guard RFID Solutions|HEMS|EQ2|20140213165004.434-0800||ORU^R45^ORU_R45|132449|P|2.6||||||||| IHE_PCD_MEMLS_001^IHE PCD^1.3.6.1.4.1.19376.1.6.1.16.1^ISO
+
+OBR|1|||203776^MDC_EVT_LS_ DEVICE ^MDC|||20140213165004.434-0800
+
+OBX|1|PL|68513^MDC_ATTR_LS_LOCATION ^MDC|<PCD data source dot notation>|^^^Fraser Health^^^South BuildingS^Floor 1^Emergency Department||||||F|||20140215181304.697-0500||||10006^THNAME^^~112212000001^TAGNO^^
+
+OBX|2|ST|68512^MDC_ATTR_LS_NAME^MDC|LOC|IV Pump 2012078||||||F|||20150127110822.229-0800
+
+OBX|3|NM|68525^MDC_ATTR_LS_COORD_X^MDC ||5350|263441^MDC_DIM_CENTI_M^MDC|||F|||20140215181304.697-0500||||10006^THNAME^^~112212000001^TAGNO
+
+OBX|4|NM|68526^MDC_ATTR_LS_COORD_Y^MDC ||16430|263441^MDC_DIM_CENTI_M^MDC|||F|||20140215181304.697-0500||||10006^THNAME^^~112212000001^TAGNO
+
+OBX|5|NM|68527^MDC_ATTR_LS_COORD_Z^MDC ||0|263441^MDC_DIM_CENTI_M^MDC|||F|||20140215181304.697-0500||||10006^THNAME^^~112212000001^TAGNO
+
+OBX|6|ST|68517^MDC_ATTR_LS_ REF_NAME^MDC|Fraser ED||||||F
+
+OBX|7|NM|68519^MDC_ATTR_LS_REF_GPS_LAT^MDC|26.0795|262880^MDC_DIM_ANG_DEG|||||F
+
+OBX|8|NM|68520^MDC_ATTR_LS_REF_LON^MDC|80.2287|262880^MDC_DIM_ANG_DEG |||||F
+
+OBX|9|NM|68521^MDC_ATTR_LS_REF_ALT^MDC||263424^MDC_DIM_X_M |||||F
+
+OBX|10|NM|68535^MDC_ATTR_GPS_COORD_ACCY^MDC||262880^MDC_DIM_ANG_DEG |||||F
+
+OBX|11|NM|68539^MDC_ATTR_GPS_ALT_ACCY^MDC||263424^MDC_DIM_X_M |||||F
+
+OBX|12|NM|68540^MDC_ATTR_GPS_HEADING^MDC|NaN|262880^MDC_DIM_ANG_DEG |||||F
+
+OBX|13|NM|68541^MDC_ATTR_GPS_SPEED^MDC|0|264960^MDC_DIM_X_M_PER_SEC|||||F
+
+The base referenced latitude and longitude can be agreed between systems in advance in which case the full lat/lon information is optional in the individual location observations so as to reduce the volume of data communicated over time.
+
+If lat/lon are passed and the additional attributes are not known they are also optional, particularly if the lat/lon is of a stationary location, such as a reference point for X/Y/Z coordinates in an LS system.
+
+The X/Y/Z coordinates are a new data type and so some definition is in order.
+
+X starts at zero at the left and progresses to the right
+
+Y starts at the bottom and progresses upwards
+
+Z starts at the bottom and progresses upwards
+
+The units of measure are specified in the observed value.
+
+If the Z coordinate is not supported it is optional and need not be sent with each observation.
+
+The base point reference name 68517^MDC_ATTR_LS_REF_NAME (“Fraser ED” in this example) defines an agreement between systems that is external to the communication of individual location observations. This agreement would also likely include a graphical image file representing the structural area of the building and the format of the file. It would be wasteful of communication bandwidth and processing power to communicate this on every location observation.
+
+While this message contains many OBX segments relating to X, Y, Z, and baseline offsets as well as GPS coordinates most messages making use of an OBX using the PL data type to indicate a named location is sufficient and the additional OBX segments are optional.
+
+=== A.2 Report Location Observation for people
+
+The Report Location Observation (RLO) for equipment is the report of an observation of the location of a person and the reason for the report. This would be similar to the previous example except that it would additionally include a Participation Information (PRT) segment beneath the OBX segment as the means of communication of the person location. As this observation transaction is associated with Use Case #2 of this profile there would be no patient specific information in the PID and PV1 segments.
+
+MSH|^~\&|Argus RFID System^00095F56787^EUI-64|Guard RFID Solutions|HEMS|EQ2|20140213165004.434-0800||ORU^R45^ORU_R45|132449|P|2.6||||||||| IHE_PCD_MEMLS_001^IHE PCD^1.3.6.1.4.1.19376.1.6.1.16.1^ISO
+
+OBR|1|||203778^MDC_EVT_LS_ PERSON ^MDC|||20140213165004.434-0800
+
+OBX|1|PL|68513^MDC_ATTR_LS_LOCATION ^MDC|<PCD data source dot notation>|^^^Fraser Health^^^South BuildingS^Floor 1^Emergency Department ||||||F|||20140215181304.697-0500||||10006^THNAME^^~112212000001^TAGNO^^
+
+PRT|1|AD||RO|^Smith^John|Patient|1|Fraser_Health|^^^Fraser_Health^^^North_Building^Floor_1^LnD|^^112204006564^GuardRFID|20160204143332.4658-0800
+
+The value in PRT-2 Action Code is AD indicating ADD. The value in PRT-4 Participation is RO indicating Responsible Observer.
+
+[#_Toc177639790 .anchor]####Volume 3 – Content Modules
+
+None
+
+== 5 Namespaces and Vocabularies
+
+Add to Section 5 Namespaces and Vocabularies
+
+None
+
+== 6 Content Modules
+
+Not applicable. CDA is not being produced.
+
+== Volume 3 Namespace Additions
+
+Add the following terms to the IHE Namespace:
+
+None
+
+[#_Toc177639794 .anchor]####Volume 4 – National Extensions
+
+Add appropriate Country section
+
+== 4 National Extensions
+
+None at this time
