@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Build output
+output/
+_site/
+
+# Office lock/temp files
+# Word/Excel/PowerPoint write these next to a document while it is open.
+# Note: the ~$ prefix is NOT covered by the *~ pattern above, which is a suffix.
+~$*
+*.tmp
+
+# LibreOffice lock files
+.~lock.*
