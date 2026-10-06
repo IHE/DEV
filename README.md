@@ -3,9 +3,8 @@ IHE Devices Domain information and formal documentation, including published tec
 
 ## TODO
 - convert the v11 drafts to AsciiDoc? (I'm pretty sure the current adoc files were converted from vol. 10.  Need to check.)
-- determine CP workflow and establish directory structure to support it
 - craft whatever README information is needed here and for various subdirectories / repos
-- create template repos for supplements and whitepapers that can be used to create new supplement / whitepaper repos.  Add documentation here about how to use them.
+- create template repo for whitepapers that can be used to create new whitepaper repos.  Add documentation here about how to use them template repos.
 - review notes at bottom of this file
 
 ### Current Publications
@@ -48,10 +47,10 @@ Note that this is not the list of admins for any of the other repositories that 
 #### IHE Domain Administrators
 The admins for the root IHE GitHub organization are able to create new repositories and generally accomplish tasks that the admins of individual repositories may not be able to do.  Those individuals are (as of Aug 7, 2025):
 
-* John Moehrke
+* Aaron Goldmuntz
 * Mary Jungers
-* John Rhoads
 * Chris Carr
+* Michael Faughn (temporary)
 ----
 ### Notes
 
@@ -63,4 +62,4 @@ Do we need documentation about:
 - how and when new repos are created
 - who the IHE root namespace admins are
 
-Do we need protections on the master branch? (probably yes)
+Do we need protections on the master branch? (probably yes, but is this an option for a free tier org?)
